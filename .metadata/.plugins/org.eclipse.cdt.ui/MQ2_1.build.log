@@ -1,10 +1,10 @@
-20:14:20 **** Incremental Build of configuration Debug for project MQ2_1 ****
+13:32:46 **** Incremental Build of configuration Debug for project MQ2_1 ****
 make -j8 all 
 arm-none-eabi-size  MQ2_1.elf 
    text	   data	    bss	    dec	    hex	filename
-  27520	    468	   1988	  29976	   7518	MQ2_1.elf
+  28904	    476	   2156	  31536	   7b30	MQ2_1.elf
 Finished building: default.size.stdout
  
 
-20:14:20 Build Finished. 0 errors, 0 warnings. (took 325ms)
+13:32:46 Build Finished. 0 errors, 0 warnings. (took 333ms)
 

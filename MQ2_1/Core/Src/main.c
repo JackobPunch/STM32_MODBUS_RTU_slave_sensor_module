@@ -22,6 +22,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include <stdio.h>
+extern void initialise_monitor_handles(void);
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -51,7 +52,7 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_ADC1_Init(void);
 /* USER CODE BEGIN PFP */
-
+// Semi-hosting will handle printf automatically
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -90,6 +91,7 @@ int main(void)
   MX_GPIO_Init();
   MX_ADC1_Init();
   /* USER CODE BEGIN 2 */
+  initialise_monitor_handles();
   printf("MQ2 Gas Sensor Test Started\r\n");
   /* USER CODE END 2 */
 
@@ -109,11 +111,21 @@ int main(void)
       // Get the ADC value
       uint32_t adcValue = HAL_ADC_GetValue(&hadc1);
 
-      // Convert to voltage (assuming 3.3V reference)
-      float voltage = (adcValue * 3.3f) / 4095.0f;
+      // Convert to millivolts (integer math)
+      uint32_t millivolts = (adcValue * 3300) / 4095;
 
-      // Print results
-      printf("MQ2 - ADC: %lu, Voltage: %.3f V\r\n", adcValue, voltage);
+      // Read digital output (DOUT) - change GPIO_PIN_1 to your actual DOUT pin
+      GPIO_PinState doutState = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_1);
+
+      // Print results with gas detection status
+      if (doutState == GPIO_PIN_RESET)
+      { // Assuming active low (common)
+        printf("MQ2 - ADC: %lu, Voltage: %lu mV, DOUT: GAS DETECTED!\r\n", adcValue, millivolts);
+      }
+      else
+      {
+        printf("MQ2 - ADC: %lu, Voltage: %lu mV, DOUT: No gas\r\n", adcValue, millivolts);
+      }
     }
 
     // Stop ADC
@@ -123,7 +135,6 @@ int main(void)
     HAL_Delay(1000);
     /* USER CODE END 3 */
   }
-  /* USER CODE END WHILE */
 }
 
 /**
@@ -242,11 +253,19 @@ static void MX_ADC1_Init(void)
  */
 static void MX_GPIO_Init(void)
 {
+  GPIO_InitTypeDef GPIO_InitStruct = {0};
   /* USER CODE BEGIN MX_GPIO_Init_1 */
   /* USER CODE END MX_GPIO_Init_1 */
 
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOA_CLK_ENABLE();
+  __HAL_RCC_GPIOB_CLK_ENABLE();
+
+  /*Configure GPIO pin : PA1 */
+  GPIO_InitStruct.Pin = GPIO_PIN_1;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /* USER CODE BEGIN MX_GPIO_Init_2 */
   /* USER CODE END MX_GPIO_Init_2 */

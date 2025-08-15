@@ -448,3 +448,24 @@ java.lang.NullPointerException: Cannot read the array length because "containers
 
 !ENTRY org.eclipse.cdt.core 1 0 2025-08-13 13:28:30.927
 !MESSAGE Indexed 'MQ2_1' (21 sources, 110 headers) in 3.71 sec: 9,292 declarations; 49,236 references; 2 unresolved inclusions; 49 syntax errors; 188 unresolved names (0.32%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-08-13 14:26:56.324
+!MESSAGE Indexed 'SCD30' (19 sources, 81 headers) in 2.74 sec: 4,758 declarations; 24,788 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.0068%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-08-13 15:40:15.820
+!MESSAGE Indexed 'SCD30' (20 sources, 85 headers) in 1.4 sec: 5,010 declarations; 25,293 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.0066%)
+!SESSION 2025-08-15 14:03:39.434 -----------------------------------------------
+eclipse.buildId=Version 1.19.0
+java.version=21.0.3
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=pl_PL
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2025-08-15 14:03:49.919
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2025-08-15 14:03:49.925
+!MESSAGE Log4j2 initialized with config file C:\Users\rolni\kody\Stm32-sensor-module-with-modbus\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2025-08-15 14:04:06.289
+!MESSAGE Started RMI Server, listening on port 41337

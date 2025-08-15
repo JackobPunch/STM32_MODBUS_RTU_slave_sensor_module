@@ -1,0 +1,4 @@
+../Core/Src/scd30.c:17:16:SCD30_CalcCRC	4
+../Core/Src/scd30.c:35:19:SCD30_DataReady	4
+../Core/Src/scd30.c:52:19:SCD30_StartMeasurement	1
+../Core/Src/scd30.c:62:19:SCD30_ReadMeasurement	7

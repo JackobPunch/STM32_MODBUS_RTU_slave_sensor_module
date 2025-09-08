@@ -1,0 +1,3 @@
+../Core/Src/mydevice.c:10:8:mbus_somedevice_open	1
+../Core/Src/mydevice.c:18:15:mbus_somedevice_read_3xxxx	2
+../Core/Src/mydevice.c:33:15:mbus_somedevice_write_4xxxx	4

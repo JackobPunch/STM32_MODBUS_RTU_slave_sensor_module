@@ -52,34 +52,34 @@ void Modbus_Init(void)
     // printf("Modbus context opened: %d\n", modbus_context); // Removed
 
     // Set register values AFTER mbus_open (like sample code does)
-    device_registers[0] = 1;   // 40001
-    device_registers[1] = 2;   // 40002
-    device_registers[2] = 3;   // 40003
-    device_registers[3] = 4;   // 40004
-    device_registers[4] = 5;   // 40005
-    device_registers[5] = 6;   // 40006
-    device_registers[6] = 7;   // 40007
-    device_registers[7] = 8;   // 40008
-    device_registers[8] = 9;   // 40009
-    device_registers[9] = 10;  // 40010
-    device_registers[10] = 11; // 40011
-    device_registers[11] = 12; // 40012
-    device_registers[12] = 13; // 40013
-    device_registers[13] = 14; // 40014
-    device_registers[14] = 15; // 40015
-    device_registers[15] = 16; // 40016
-    device_registers[16] = 17; // 40017
-    device_registers[17] = 18; // 40018
-    device_registers[18] = 19; // 40019
-    device_registers[19] = 20; // 40020
+    device_registers[0] = 20;  // 40001
+    device_registers[1] = 19;  // 40002
+    device_registers[2] = 18;  // 40003
+    device_registers[3] = 17;  // 40004
+    device_registers[4] = 16;  // 40005
+    device_registers[5] = 15;  // 40006
+    device_registers[6] = 14;  // 40007
+    device_registers[7] = 13;  // 40008
+    device_registers[8] = 12;  // 40009
+    device_registers[9] = 11;  // 40010
+    device_registers[10] = 10; // 40011
+    device_registers[11] = 9;  // 40012
+    device_registers[12] = 8;  // 40013
+    device_registers[13] = 7;  // 40014
+    device_registers[14] = 6;  // 40015
+    device_registers[15] = 5;  // 40016
+    device_registers[16] = 4;  // 40017
+    device_registers[17] = 3;  // 40018
+    device_registers[18] = 2;  // 40019
+    device_registers[19] = 1;  // 40020
 
     // Debug: Verify register values (only at startup, before Modbus communication starts)
-    printf("Register verification after initialization:\n");
-    for (int i = 0; i < 20; i++)
-    {
-        printf("Reg[%d] = %d\n", i, device_registers[i]);
-    }
-    printf("Registers initialized. Ready for ModbusPoll connection.\n");
+    // printf("Register verification after initialization:\n"); // Removed to prevent timeouts
+    // for (int i = 0; i < 20; i++)
+    // {
+    //     printf("Reg[%d] = %d\n", i, device_registers[i]);
+    // }
+    // printf("Registers initialized. Ready for ModbusPoll connection.\n"); // Removed to prevent timeouts
 
     // Start UART DMA reception
     HAL_UARTEx_ReceiveToIdle_DMA(&huart1, modbus_rx_buffer, sizeof(modbus_rx_buffer));

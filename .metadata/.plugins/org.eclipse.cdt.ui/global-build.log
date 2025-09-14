@@ -1,4 +1,4 @@
-19:34:11 **** Build of configuration Debug for project modbusTrying ****
+20:16:32 **** Build of configuration Debug for project modbusTrying ****
 make -j8 all 
 arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal.o"
 arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.o"
@@ -33,22 +33,15 @@ Finished building target: modbusTrying.elf
 arm-none-eabi-size  modbusTrying.elf 
 arm-none-eabi-objdump -h -S modbusTrying.elf  > "modbusTrying.list"
    text	   data	    bss	    dec	    hex	filename
-  25160	    152	   2984	  28296	   6e88	modbusTrying.elf
+  21620	    152	   2968	  24740	   60a4	modbusTrying.elf
 Finished building: default.size.stdout
  
 Finished building: modbusTrying.list
  
-19:34:17 **** Incremental Build of configuration Debug for project modbusTrying ****
+20:16:41 **** Incremental Build of configuration Debug for project modbusTrying ****
 make -j8 all 
 arm-none-eabi-size  modbusTrying.elf 
    text	   data	    bss	    dec	    hex	filename
-  25160	    152	   2984	  28296	   6e88	modbusTrying.elf
-Finished building: default.size.stdout
- 
-19:34:31 **** Incremental Build of configuration Debug for project modbusTrying ****
-make -j8 all 
-arm-none-eabi-size  modbusTrying.elf 
-   text	   data	    bss	    dec	    hex	filename
-  25160	    152	   2984	  28296	   6e88	modbusTrying.elf
+  21620	    152	   2968	  24740	   60a4	modbusTrying.elf
 Finished building: default.size.stdout
  

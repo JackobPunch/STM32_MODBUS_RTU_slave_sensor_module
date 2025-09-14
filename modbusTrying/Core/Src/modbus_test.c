@@ -9,7 +9,7 @@
 
 /* Private variables ---------------------------------------------------------*/
 static uint32_t test_counter = 0;
-static uint16_t test_value = 0;
+// static uint16_t test_value = 0; // Removed - unused variable
 
 /* Exported functions -------------------------------------------------------*/
 
@@ -20,11 +20,11 @@ static uint16_t test_value = 0;
  */
 void Modbus_Test_Init(void)
 {
-    // Set initial test values
-    Modbus_Device_SetRegister(0, 0x1234);  // 40001: Test sensor 1
-    Modbus_Device_SetRegister(1, 0x5678);  // 40002: Test sensor 2
-    Modbus_Device_SetRegister(9, 0x0001);  // 40010: Status (bit 0 = ready)
-    Modbus_Device_SetRegister(11, 0x0100); // 40012: Firmware version 1.0
+    // Set initial test values - DISABLED to preserve sequential test data (1-20)
+    // Modbus_Device_SetRegister(0, 0x1234);  // 40001: Test sensor 1
+    // Modbus_Device_SetRegister(1, 0x5678);  // 40002: Test sensor 2
+    // Modbus_Device_SetRegister(9, 0x0001);  // 40010: Status (bit 0 = ready)
+    // Modbus_Device_SetRegister(11, 0x0100); // 40012: Firmware version 1.0
 }
 
 /**
@@ -36,23 +36,23 @@ void Modbus_Test_Update(void)
 {
     test_counter++;
 
-    // Update test sensor values every 100 cycles
-    if (test_counter % 100 == 0)
-    {
-        test_value++;
-        // Modbus_Device_SetRegister(0, test_value);     // 40001 - Commented out to preserve test data
-        // Modbus_Device_SetRegister(1, test_value + 1); // 40002 - Commented out to preserve test data
-        // Modbus_Device_SetRegister(2, test_value + 2); // 40003 - Commented out to preserve test data
-        // Modbus_Device_SetRegister(3, test_value + 3); // 40004 - Commented out to preserve test data
-    }
+    // Update test sensor values every 100 cycles - DISABLED to preserve sequential test data
+    // if (test_counter % 100 == 0)
+    // {
+    //     test_value++;
+    //     // Modbus_Device_SetRegister(0, test_value);     // 40001 - Commented out to preserve test data
+    //     // Modbus_Device_SetRegister(1, test_value + 1); // 40002 - Commented out to preserve test data
+    //     // Modbus_Device_SetRegister(2, test_value + 2); // 40003 - Commented out to preserve test data
+    //     // Modbus_Device_SetRegister(3, test_value + 3); // 40004 - Commented out to preserve test data
+    // }
 
-    // Update status register
-    uint16_t status = 0x0001; // Bit 0: Ready
-    if (test_counter % 200 == 0)
-    {
-        status |= 0x0002; // Bit 1: Data updated
-    }
-    Modbus_Device_SetRegister(9, status); // 40010
+    // Update status register - DISABLED to preserve sequential test data
+    // uint16_t status = 0x0001; // Bit 0: Ready
+    // if (test_counter % 200 == 0)
+    // {
+    //     status |= 0x0002; // Bit 1: Data updated
+    // }
+    // Modbus_Device_SetRegister(9, status); // 40010
 
     // Simulate temperature reading (25.00°C = 9472) - Commented out to preserve test data
     // Modbus_Device_SetRegister(4, 205); // 40005

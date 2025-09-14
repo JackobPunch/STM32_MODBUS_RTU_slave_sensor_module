@@ -10,30 +10,11 @@
 /* Private variables ---------------------------------------------------------*/
 // Device registers (Holding Registers - 4xxxx) - Made global like sample code
 uint16_t device_registers[20] = {
-    1,  // 40001: Register 0
-    2,  // 40002: Register 1
-    3,  // 40003: Register 2
-    4,  // 40004: Register 3
-    5,  // 40005: Register 4
-    6,  // 40006: Register 5
-    7,  // 40007: Register 6
-    8,  // 40008: Register 7
-    9,  // 40009: Register 8
-    10, // 40010: Register 9
-    11, // 40011: Register 10
-    12, // 40012: Register 11
-    13, // 40013: Register 12
-    14, // 40014: Register 13
-    15, // 40015: Register 14
-    16, // 40016: Register 15
-    17, // 40017: Register 16
-    18, // 40018: Register 17
-    19, // 40019: Register 18
-    20  // 40020: Register 19
-};
+    20, 19, 18, 17, 16, 15, 14, 13, 12, 11,
+    10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
 
-// Debug: Verify array initialization
-void Modbus_Device_DebugArray(void)
+// Debug: Print array contents (renamed from DebugArray for clarity)
+void Modbus_Device_PrintArray(void)
 {
     printf("Device Registers Array Contents:\n");
     for (int i = 0; i < 20; i++)
@@ -73,10 +54,8 @@ uint16_t Modbus_Device_Read(uint32_t logical_address)
         uint16_t index = logical_address - 40001;
         uint16_t value = device_registers[index];
 
-        // Minimal debug: only for first few registers to avoid timing issues
-        if (index < 6) {
-            printf("READ: addr=%lu, index=%d, returning %d\n", logical_address, index, value);
-        }
+        // Debug: Show what we're returning for ALL registers
+        // printf("READ: addr=%lu, index=%d, returning %d (0x%04X)\n", logical_address, index, value, value); // Removed to prevent timeouts
 
         return value;
     }

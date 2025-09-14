@@ -1,10 +1,10 @@
-19:34:31 **** Incremental Build of configuration Debug for project modbusTrying ****
+20:16:41 **** Incremental Build of configuration Debug for project modbusTrying ****
 make -j8 all 
 arm-none-eabi-size  modbusTrying.elf 
    text	   data	    bss	    dec	    hex	filename
-  25160	    152	   2984	  28296	   6e88	modbusTrying.elf
+  21620	    152	   2968	  24740	   60a4	modbusTrying.elf
 Finished building: default.size.stdout
  
 
-19:34:31 Build Finished. 0 errors, 0 warnings. (took 308ms)
+20:16:41 Build Finished. 0 errors, 0 warnings. (took 313ms)
 

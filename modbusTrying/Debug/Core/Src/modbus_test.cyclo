@@ -1,2 +1,2 @@
 ../Core/Src/modbus_test.c:21:6:Modbus_Test_Init	1
-../Core/Src/modbus_test.c:35:6:Modbus_Test_Update	3
+../Core/Src/modbus_test.c:35:6:Modbus_Test_Update	1

@@ -1,6 +1,6 @@
-../Core/Src/modbus_device.c:36:6:Modbus_Device_DebugArray	16	static
-../Core/Src/modbus_device.c:54:10:Modbus_Device_GetRegister	16	static
-../Core/Src/modbus_device.c:68:10:Modbus_Device_Read	24	static
-../Core/Src/modbus_device.c:93:10:Modbus_Device_Write	24	static
-../Core/Src/modbus_device.c:141:6:Modbus_Device_UpdateSensors	4	static
-../Core/Src/modbus_device.c:157:6:Modbus_Device_SetRegister	16	static
+../Core/Src/modbus_device.c:17:6:Modbus_Device_PrintArray	16	static
+../Core/Src/modbus_device.c:35:10:Modbus_Device_GetRegister	16	static
+../Core/Src/modbus_device.c:49:10:Modbus_Device_Read	24	static
+../Core/Src/modbus_device.c:72:10:Modbus_Device_Write	24	static
+../Core/Src/modbus_device.c:120:6:Modbus_Device_UpdateSensors	4	static
+../Core/Src/modbus_device.c:136:6:Modbus_Device_SetRegister	16	static

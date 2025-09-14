@@ -1,0 +1,6 @@
+../Core/Src/modbus_device.c:36:6:Modbus_Device_DebugArray	2
+../Core/Src/modbus_device.c:54:10:Modbus_Device_GetRegister	2
+../Core/Src/modbus_device.c:68:10:Modbus_Device_Read	4
+../Core/Src/modbus_device.c:93:10:Modbus_Device_Write	3
+../Core/Src/modbus_device.c:141:6:Modbus_Device_UpdateSensors	1
+../Core/Src/modbus_device.c:157:6:Modbus_Device_SetRegister	2

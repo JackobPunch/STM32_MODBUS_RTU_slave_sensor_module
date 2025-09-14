@@ -22,7 +22,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include <stdio.h>
-extern void initialise_monitor_handles(void);
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -54,7 +54,7 @@ static void MX_ADC1_Init(void);
 /* USER CODE BEGIN PFP */
 // Semi-hosting will handle printf automatically
 /* USER CODE END PFP */
-
+extern void initialise_monitor_handles(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 

@@ -1,0 +1,6 @@
+../Core/Src/uart_callbacks.c:24:6:UART_Callbacks_Init	1
+../Core/Src/uart_callbacks.c:38:6:HAL_UARTEx_RxEventCallback	3
+../Core/Src/uart_callbacks.c:70:6:HAL_UART_ErrorCallback	2
+../Core/Src/uart_callbacks.c:89:6:HAL_UART_AbortCpltCallback	2
+../Core/Src/uart_callbacks.c:103:6:HAL_UART_AbortTransmitCpltCallback	1
+../Core/Src/uart_callbacks.c:116:6:HAL_UART_AbortReceiveCpltCallback	2

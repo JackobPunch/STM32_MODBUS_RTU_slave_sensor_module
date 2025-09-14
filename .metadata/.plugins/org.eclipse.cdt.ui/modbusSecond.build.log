@@ -1,0 +1,10 @@
+21:31:27 **** Incremental Build of configuration Debug for project modbusSecond ****
+make -j8 all 
+arm-none-eabi-size  modbusSecond.elf 
+   text	   data	    bss	    dec	    hex	filename
+  44892	    444	   9004	  54340	   d444	modbusSecond.elf
+Finished building: default.size.stdout
+ 
+
+21:31:27 Build Finished. 0 errors, 0 warnings. (took 359ms)
+

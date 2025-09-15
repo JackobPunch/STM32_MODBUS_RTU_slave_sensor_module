@@ -51,7 +51,7 @@ DMA_HandleTypeDef hdma_usart1_rx;
 DMA_HandleTypeDef hdma_usart1_tx;
 
 /* USER CODE BEGIN PV */
-
+extern uint16_t device_registers[20]; // Access to device registers for testing
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -126,6 +126,8 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  // static uint32_t test_counter = 0; // Commented out - unused when test updates are disabled
+
   while (1)
   {
     /* USER CODE BEGIN 3 */
@@ -139,6 +141,19 @@ int main(void)
     // Process Modbus (if needed)
     Modbus_Process();
 
+    // Test: Modify register values every 3 seconds to verify callbacks are working
+    // DISABLED temporarily to test if this was causing timeouts
+    /*
+    test_counter++;
+    if (test_counter % 30 == 0) // Every 30 * 100ms = 3 seconds
+    {
+      // Add 1 to each register value
+      for (int i = 0; i < 20; i++)
+      {
+        device_registers[i] += 1;
+      }
+    }
+    */
     // Add small delay to prevent busy waiting
     HAL_Delay(100);
 

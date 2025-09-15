@@ -28,7 +28,7 @@
  * @license     MIT
  * @package     stModbus
  */
-#include <modbus.h>
+#include "modbus.h"
 
 static const uint8_t aucCRCHi[] = {
     0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0, 0x80, 0x41, 0x01, 0xC0, 0x80, 0x41,
@@ -97,9 +97,10 @@ usMBCRC16( UCHAR * pucFrame, USHORT usLen )
 
 */
 
-uint16_t mbus_crc16(const uint16_t crc16, const uint8_t byte) {
-  const int index = (crc16 & 0xFF) ^ byte;
-  return (aucCRCLo[index] << 8) | ((crc16 >> 8) ^ aucCRCHi[index]);
+uint16_t mbus_crc16(const uint16_t crc16, const uint8_t byte)
+{
+    const int index = (crc16 & 0xFF) ^ byte;
+    return (aucCRCLo[index] << 8) | ((crc16 >> 8) ^ aucCRCHi[index]);
 }
 
 __attribute__((weak)) uint32_t mbus_tickcount() { return 0; }

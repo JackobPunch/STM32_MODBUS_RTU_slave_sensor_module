@@ -33,20 +33,18 @@
 #define _STMODBUS_MBDEVICE_H_
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"
+{
 #endif
 
 #if defined(STM32F405xx) || defined(STM32F415xx) || defined(STM32F407xx) || defined(STM32F417xx) || \
     defined(STM32F427xx) || defined(STM32F437xx) || defined(STM32F429xx) || defined(STM32F439xx) || \
     defined(STM32F401xC) || defined(STM32F401xE) || defined(STM32F411xE) || defined(STM32F469xx) || \
-    defined(STM32F479xx) || defined(STM32F4)
-    #include <stm32f4xx_hal.h>
-		void modbus_usart_it(UART_HandleTypeDef *huart);
+    defined(STM32F479xx) || defined(STM32F4) ||                                                     \
+    defined(STM32F303xx) || defined(STM32F302xx) || defined(STM32F301xx) || defined(STM32F3)
+#include <stm32f3xx_hal.h>
+  void modbus_usart_it(UART_HandleTypeDef *huart);
 #endif
-
-
-
-
 
 #ifdef __cplusplus
 }

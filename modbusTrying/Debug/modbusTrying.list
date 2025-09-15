@@ -29,25 +29,25 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  12 .ARM.attributes 00000030  00000000  00000000  00007098  2**0
                   CONTENTS, READONLY
- 13 .debug_info   0000c228  00000000  00000000  000070c8  2**0
+ 13 .debug_info   0000c22d  00000000  00000000  000070c8  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_abbrev 000023a0  00000000  00000000  000132f0  2**0
+ 14 .debug_abbrev 000023b8  00000000  00000000  000132f5  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_aranges 000008f8  00000000  00000000  00015690  2**3
+ 15 .debug_aranges 000008f8  00000000  00000000  000156b0  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_rnglists 000006bb  00000000  00000000  00015f88  2**0
+ 16 .debug_rnglists 000006bb  00000000  00000000  00015fa8  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_macro  0001b293  00000000  00000000  00016643  2**0
+ 17 .debug_macro  0001b293  00000000  00000000  00016663  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_line   0000d435  00000000  00000000  000318d6  2**0
+ 18 .debug_line   0000d437  00000000  00000000  000318f6  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_str    0009b40a  00000000  00000000  0003ed0b  2**0
+ 19 .debug_str    0009b40a  00000000  00000000  0003ed2d  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 20 .comment      00000043  00000000  00000000  000da115  2**0
+ 20 .comment      00000043  00000000  00000000  000da137  2**0
                   CONTENTS, READONLY
- 21 .debug_frame  00002a34  00000000  00000000  000da158  2**2
+ 21 .debug_frame  00002a34  00000000  00000000  000da17c  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 22 .debug_line_str 0000006f  00000000  00000000  000dcb8c  2**0
+ 22 .debug_line_str 0000006f  00000000  00000000  000dcbb0  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -161,7 +161,10 @@ int main(void)
     // Process Modbus (if needed)
     Modbus_Process();
  8000208:	f000 fee8 	bl	8000fdc <Modbus_Process>
-
+        device_registers[i] += 1;
+      }
+    }
+    */
     // Add small delay to prevent busy waiting
     HAL_Delay(100);
  800020c:	2064      	movs	r0, #100	@ 0x64

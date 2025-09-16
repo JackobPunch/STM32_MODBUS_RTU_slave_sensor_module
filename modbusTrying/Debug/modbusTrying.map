@@ -3823,47 +3823,47 @@ LOAD C:/ST/STM32CubeIDE_1.16.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
 LOAD C:/ST/STM32CubeIDE_1.16.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a
 LOAD C:/ST/STM32CubeIDE_1.16.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a
 
-.debug_info     0x00000000     0xc22d
+.debug_info     0x00000000     0xc230
  .debug_info    0x00000000      0xde3 ./Core/Src/main.o
  .debug_info    0x00000de3      0x156 ./Core/Src/mbutils.o
  .debug_info    0x00000f39      0x8d5 ./Core/Src/modbus.o
  .debug_info    0x0000180e      0x240 ./Core/Src/modbus_device.o
- .debug_info    0x00001a4e      0x94d ./Core/Src/modbus_init.o
- .debug_info    0x0000239b       0xbb ./Core/Src/modbus_test.o
- .debug_info    0x00002456      0xafa ./Core/Src/stm32f3xx_hal_msp.o
- .debug_info    0x00002f50      0x734 ./Core/Src/stm32f3xx_it.o
- .debug_info    0x00003684      0x407 ./Core/Src/system_stm32f3xx.o
- .debug_info    0x00003a8b      0x81e ./Core/Src/uart_callbacks.o
- .debug_info    0x000042a9       0x30 ./Core/Startup/startup_stm32f303k8tx.o
- .debug_info    0x000042d9      0x74a ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal.o
- .debug_info    0x00004a23      0xa87 ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.o
- .debug_info    0x000054aa      0x6e1 ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_dma.o
- .debug_info    0x00005b8b      0x6a6 ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_gpio.o
- .debug_info    0x00006231     0x148a ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc.o
- .debug_info    0x000076bb      0x52e ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc_ex.o
- .debug_info    0x00007be9     0x39a8 ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.o
- .debug_info    0x0000b591      0xc9c ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart_ex.o
+ .debug_info    0x00001a4e      0x950 ./Core/Src/modbus_init.o
+ .debug_info    0x0000239e       0xbb ./Core/Src/modbus_test.o
+ .debug_info    0x00002459      0xafa ./Core/Src/stm32f3xx_hal_msp.o
+ .debug_info    0x00002f53      0x734 ./Core/Src/stm32f3xx_it.o
+ .debug_info    0x00003687      0x407 ./Core/Src/system_stm32f3xx.o
+ .debug_info    0x00003a8e      0x81e ./Core/Src/uart_callbacks.o
+ .debug_info    0x000042ac       0x30 ./Core/Startup/startup_stm32f303k8tx.o
+ .debug_info    0x000042dc      0x74a ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal.o
+ .debug_info    0x00004a26      0xa87 ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.o
+ .debug_info    0x000054ad      0x6e1 ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_dma.o
+ .debug_info    0x00005b8e      0x6a6 ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_gpio.o
+ .debug_info    0x00006234     0x148a ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc.o
+ .debug_info    0x000076be      0x52e ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc_ex.o
+ .debug_info    0x00007bec     0x39a8 ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.o
+ .debug_info    0x0000b594      0xc9c ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart_ex.o
 
-.debug_abbrev   0x00000000     0x23b8
+.debug_abbrev   0x00000000     0x23b7
  .debug_abbrev  0x00000000      0x291 ./Core/Src/main.o
  .debug_abbrev  0x00000291       0xac ./Core/Src/mbutils.o
  .debug_abbrev  0x0000033d      0x291 ./Core/Src/modbus.o
  .debug_abbrev  0x000005ce      0x14d ./Core/Src/modbus_device.o
- .debug_abbrev  0x0000071b      0x1ff ./Core/Src/modbus_init.o
- .debug_abbrev  0x0000091a       0x67 ./Core/Src/modbus_test.o
- .debug_abbrev  0x00000981      0x1f0 ./Core/Src/stm32f3xx_hal_msp.o
- .debug_abbrev  0x00000b71      0x175 ./Core/Src/stm32f3xx_it.o
- .debug_abbrev  0x00000ce6      0x11a ./Core/Src/system_stm32f3xx.o
- .debug_abbrev  0x00000e00      0x1ff ./Core/Src/uart_callbacks.o
- .debug_abbrev  0x00000fff       0x24 ./Core/Startup/startup_stm32f303k8tx.o
- .debug_abbrev  0x00001023      0x215 ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal.o
- .debug_abbrev  0x00001238      0x2f8 ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.o
- .debug_abbrev  0x00001530      0x20d ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_dma.o
- .debug_abbrev  0x0000173d      0x1ca ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_gpio.o
- .debug_abbrev  0x00001907      0x300 ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc.o
- .debug_abbrev  0x00001c07      0x221 ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc_ex.o
- .debug_abbrev  0x00001e28      0x2d1 ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.o
- .debug_abbrev  0x000020f9      0x2bf ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart_ex.o
+ .debug_abbrev  0x0000071b      0x1fe ./Core/Src/modbus_init.o
+ .debug_abbrev  0x00000919       0x67 ./Core/Src/modbus_test.o
+ .debug_abbrev  0x00000980      0x1f0 ./Core/Src/stm32f3xx_hal_msp.o
+ .debug_abbrev  0x00000b70      0x175 ./Core/Src/stm32f3xx_it.o
+ .debug_abbrev  0x00000ce5      0x11a ./Core/Src/system_stm32f3xx.o
+ .debug_abbrev  0x00000dff      0x1ff ./Core/Src/uart_callbacks.o
+ .debug_abbrev  0x00000ffe       0x24 ./Core/Startup/startup_stm32f303k8tx.o
+ .debug_abbrev  0x00001022      0x215 ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal.o
+ .debug_abbrev  0x00001237      0x2f8 ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.o
+ .debug_abbrev  0x0000152f      0x20d ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_dma.o
+ .debug_abbrev  0x0000173c      0x1ca ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_gpio.o
+ .debug_abbrev  0x00001906      0x300 ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc.o
+ .debug_abbrev  0x00001c06      0x221 ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc_ex.o
+ .debug_abbrev  0x00001e27      0x2d1 ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.o
+ .debug_abbrev  0x000020f8      0x2bf ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart_ex.o
 
 .debug_aranges  0x00000000      0x8f8
  .debug_aranges

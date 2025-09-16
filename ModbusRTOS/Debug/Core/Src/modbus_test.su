@@ -1,0 +1,2 @@
+../Core/Src/modbus_test.c:21:6:Modbus_Test_Init	8	static
+../Core/Src/modbus_test.c:43:6:Modbus_Test_Update	16	static

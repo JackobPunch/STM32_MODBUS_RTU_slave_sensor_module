@@ -1,0 +1,24 @@
+/**
+ * @file    uart_callbacks.h
+ * @brief   UART callback functions header
+ * @author  Generated for RTOS version
+ */
+
+#ifndef __UART_CALLBACKS_H
+#define __UART_CALLBACKS_H
+
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+
+#include "main.h"
+
+    /* Exported functions */
+    void UART_Callbacks_Init(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* __UART_CALLBACKS_H */

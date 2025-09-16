@@ -1,0 +1,5 @@
+../Core/Src/modbus_device.c:24:10:Modbus_Device_GetRegister	16	static
+../Core/Src/modbus_device.c:38:10:Modbus_Device_Read	24	static
+../Core/Src/modbus_device.c:56:10:Modbus_Device_Write	24	static
+../Core/Src/modbus_device.c:104:6:Modbus_Device_UpdateSensors	4	static
+../Core/Src/modbus_device.c:120:6:Modbus_Device_SetRegister	16	static

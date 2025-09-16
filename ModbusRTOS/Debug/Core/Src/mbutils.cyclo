@@ -1,0 +1,2 @@
+../Core/Src/mbutils.c:50:10:mbutils_crc16	2
+../Core/Src/mbutils.c:68:10:mbutils_crc16_update	1

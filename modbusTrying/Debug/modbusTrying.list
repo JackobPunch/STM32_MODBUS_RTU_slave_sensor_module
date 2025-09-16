@@ -29,9 +29,9 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  12 .ARM.attributes 00000030  00000000  00000000  00007098  2**0
                   CONTENTS, READONLY
- 13 .debug_info   0000c22d  00000000  00000000  000070c8  2**0
+ 13 .debug_info   0000c230  00000000  00000000  000070c8  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_abbrev 000023b8  00000000  00000000  000132f5  2**0
+ 14 .debug_abbrev 000023b7  00000000  00000000  000132f8  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  15 .debug_aranges 000008f8  00000000  00000000  000156b0  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
@@ -512,12 +512,12 @@ __STATIC_FORCEINLINE void __disable_irq(void)
  80003d6:	e7fd      	b.n	80003d4 <Error_Handler+0x8>
 
 080003d8 <mbus_crc16>:
-    return ( USHORT )( ucCRCHi << 8 | ucCRCLo );
 }
 
 */
 
-uint16_t mbus_crc16(const uint16_t crc16, const uint8_t byte) {
+uint16_t mbus_crc16(const uint16_t crc16, const uint8_t byte)
+{
  80003d8:	b480      	push	{r7}
  80003da:	b085      	sub	sp, #20
  80003dc:	af00      	add	r7, sp, #0
@@ -526,13 +526,13 @@ uint16_t mbus_crc16(const uint16_t crc16, const uint8_t byte) {
  80003e2:	80fb      	strh	r3, [r7, #6]
  80003e4:	4613      	mov	r3, r2
  80003e6:	717b      	strb	r3, [r7, #5]
-  const int index = (crc16 & 0xFF) ^ byte;
+    const int index = (crc16 & 0xFF) ^ byte;
  80003e8:	88fb      	ldrh	r3, [r7, #6]
  80003ea:	b2da      	uxtb	r2, r3
  80003ec:	797b      	ldrb	r3, [r7, #5]
  80003ee:	4053      	eors	r3, r2
  80003f0:	60fb      	str	r3, [r7, #12]
-  return (aucCRCLo[index] << 8) | ((crc16 >> 8) ^ aucCRCHi[index]);
+    return (aucCRCLo[index] << 8) | ((crc16 >> 8) ^ aucCRCHi[index]);
  80003f2:	4a0d      	ldr	r2, [pc, #52]	@ (8000428 <mbus_crc16+0x50>)
  80003f4:	68fb      	ldr	r3, [r7, #12]
  80003f6:	4413      	add	r3, r2

@@ -1,0 +1,4 @@
+../Core/Src/modbus_init.c:30:6:Modbus_Init	1
+../Core/Src/modbus_init.c:67:6:Modbus_Process	1
+../Core/Src/modbus_init.c:82:12:Modbus_SendData	2
+../Core/Src/modbus_init.c:105:8:Modbus_GetContext	1

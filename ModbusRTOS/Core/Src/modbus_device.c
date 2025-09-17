@@ -60,55 +60,12 @@ uint16_t Modbus_Device_Write(uint32_t logical_address, uint16_t value)
     {
         uint16_t index = logical_address - 40001;
 
-        // Handle special write operations
-        switch (index)
-        {
-        case 14: // Configuration register 1 (40015)
-            // Apply_Configuration1(value);
-            break;
-
-        case 15: // Configuration register 2 (40016)
-            // Apply_Configuration2(value);
-            break;
-
-        case 16: // Calibration value 1 (40017)
-            // Set_Calibration1(value);
-            break;
-
-        case 17: // Calibration value 2 (40018)
-            // Set_Calibration2(value);
-            break;
-
-        case 18: // Test register (40019)
-            // Handle test operations
-            break;
-
-        default:
-            // Store value for other registers
-            break;
-        }
-
-        // Store the value
+        // Store the value (simplified - no special cases needed for basic testing)
         device_registers[index] = value;
         return value;
     }
 
     return 0; // Invalid address
-}
-
-/**
- * @brief  Update sensor values (call this periodically)
- * @param  None
- * @retval None
- */
-void Modbus_Device_UpdateSensors(void)
-{
-    // Update sensor values - call this from RTOS task
-    // device_registers[0] = Read_Sensor1_Value();  // 40001
-    // device_registers[1] = Read_Sensor2_Value();  // 40002
-    // device_registers[4] = Read_Temperature();    // 40005
-    // device_registers[5] = Read_Humidity();       // 40006
-    // etc.
 }
 
 /**

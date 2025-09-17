@@ -63,17 +63,11 @@ void Modbus_Test_Update(void)
         Modbus_Device_SetRegister(9, test_value + 90); // 40010: Base + 90
     }
 
-    // Update status register
-    uint16_t status = 0x0001; // Bit 0: Ready
-    if (test_counter % 200 == 0)
+    // Update status register (only when needed to avoid conflicts)
+    if (test_counter % 200 == 0) // Every 20 seconds
     {
-        status |= 0x0002; // Bit 1: Data updated
+        uint16_t status = 0x0001;              // Bit 0: Ready
+        status |= 0x0002;                      // Bit 1: Data updated
+        Modbus_Device_SetRegister(10, status); // Use register 10 for status (40011)
     }
-    Modbus_Device_SetRegister(9, status); // 40010
-
-    // Simulate temperature reading (25.00°C = 9472)
-    Modbus_Device_SetRegister(4, 2500); // 40005
-
-    // Simulate humidity reading (65.00% = 25856)
-    Modbus_Device_SetRegister(5, 6500); // 40006
 }

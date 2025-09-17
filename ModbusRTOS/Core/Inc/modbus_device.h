@@ -21,7 +21,6 @@ extern "C"
     /* Exported functions */
     uint16_t Modbus_Device_Read(uint32_t logical_address);
     uint16_t Modbus_Device_Write(uint32_t logical_address, uint16_t value);
-    void Modbus_Device_UpdateSensors(void);
     void Modbus_Device_SetRegister(uint8_t index, uint16_t value);
     uint16_t Modbus_Device_GetRegister(uint8_t index);
 

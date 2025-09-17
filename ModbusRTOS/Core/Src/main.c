@@ -365,9 +365,6 @@ void SensorUpdateTask(void *argument)
   /* Infinite loop */
   for (;;)
   {
-    // Update sensor values
-    Modbus_Device_UpdateSensors();
-
     // Update test values
     Modbus_Test_Update();
 

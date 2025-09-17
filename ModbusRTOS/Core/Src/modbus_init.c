@@ -29,8 +29,6 @@ static int Modbus_SendData(void *context, const uint8_t *data, const uint16_t si
  */
 void Modbus_Init(void)
 {
-    // printf("MODBUS: Initialization started\n");
-
     // Configure Modbus
     modbus_config.devaddr = MODBUS_SLAVE_ADDRESS;
     modbus_config.coils = 0;
@@ -56,7 +54,7 @@ void Modbus_Init(void)
     // Enable UART idle line interrupt
     __HAL_UART_ENABLE_IT(&huart1, UART_IT_IDLE);
 
-    // printf("MODBUS: Initialization complete, slave address: 0x%02X\n", MODBUS_SLAVE_ADDRESS);
+    // Modbus initialization complete
 }
 
 /**
@@ -81,18 +79,14 @@ void Modbus_Process(void)
  */
 static int Modbus_SendData(void *context, const uint8_t *data, const uint16_t size)
 {
-    // printf("MODBUS: TX attempt, size: %d bytes\n", size);
-
     HAL_StatusTypeDef status = HAL_UART_Transmit(&huart1, (uint8_t *)data, size, 1000);
 
     if (status == HAL_OK)
     {
-        // printf("MODBUS: TX success\n");
         return size;
     }
     else
     {
-        // printf("MODBUS: TX error, status: %d\n", status);
         return 0;
     }
 }

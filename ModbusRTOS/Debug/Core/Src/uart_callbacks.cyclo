@@ -1,4 +1,5 @@
-../Core/Src/uart_callbacks.c:22:6:UART_Callbacks_Init	1
-../Core/Src/uart_callbacks.c:35:6:HAL_UARTEx_RxEventCallback	4
-../Core/Src/uart_callbacks.c:70:6:HAL_UART_ErrorCallback	2
-../Core/Src/uart_callbacks.c:89:6:HAL_UART_AbortCpltCallback	2
+../Core/Src/uart_callbacks.c:25:6:UART_Callbacks_Init	1
+../Core/Src/uart_callbacks.c:37:13:UART_RestartDmaReception	1
+../Core/Src/uart_callbacks.c:50:6:HAL_UARTEx_RxEventCallback	3
+../Core/Src/uart_callbacks.c:76:6:HAL_UART_ErrorCallback	2
+../Core/Src/uart_callbacks.c:95:6:HAL_UART_AbortCpltCallback	2

@@ -114,7 +114,6 @@ mbus_status_t mbus_poll(mbus_t mb_context, uint8_t data)
             ctx->state = MBUS_STATE_RECEIVING;
             ctx->header[0] = data;
             ctx->header_len = 1;
-            // printf("MODBUS: Valid slave address detected: 0x%02X\n", data);
         }
         break;
 
@@ -133,8 +132,6 @@ mbus_status_t mbus_poll(mbus_t mb_context, uint8_t data)
 
                 if (received_crc == calculated_crc)
                 {
-                    // printf("MODBUS: Valid frame received, function: 0x%02X\n", ctx->header[1]);
-
                     // Process the frame
                     ctx->state = MBUS_STATE_PROCESSING;
 
@@ -158,7 +155,6 @@ mbus_status_t mbus_poll(mbus_t mb_context, uint8_t data)
                         break;
 
                     default:
-                        // printf("MODBUS: Unsupported function code: 0x%02X\n", ctx->header[1]);
                         Modbus_SendErrorResponse(ctx, MBUS_RESPONSE_ILLEGAL_FUNCTION);
                         break;
                     }
@@ -169,7 +165,6 @@ mbus_status_t mbus_poll(mbus_t mb_context, uint8_t data)
                 }
                 else
                 {
-                    // printf("MODBUS: CRC error - received: 0x%04X, calculated: 0x%04X\n", received_crc, calculated_crc);
                     // Reset state on CRC error
                     ctx->state = MBUS_STATE_IDLE;
                     ctx->header_len = 0;
@@ -178,7 +173,6 @@ mbus_status_t mbus_poll(mbus_t mb_context, uint8_t data)
         }
         else
         {
-            // printf("MODBUS: Frame buffer overflow\n");
             // Buffer overflow, reset
             ctx->state = MBUS_STATE_IDLE;
             ctx->header_len = 0;
@@ -260,8 +254,6 @@ void Modbus_ProcessReadRegisters(_stmodbus_context_t *ctx)
     uint16_t start_addr = (ctx->header[2] << 8) | ctx->header[3];
     uint16_t reg_count = (ctx->header[4] << 8) | ctx->header[5];
 
-    // printf("MODBUS: Read %d registers starting at %d\n", reg_count, start_addr);
-
     // Validate parameters
     if (reg_count == 0 || reg_count > 125)
     {
@@ -304,8 +296,6 @@ void Modbus_ProcessWriteRegister(_stmodbus_context_t *ctx)
     uint16_t reg_addr = (ctx->header[2] << 8) | ctx->header[3];
     uint16_t reg_value = (ctx->header[4] << 8) | ctx->header[5];
 
-    // printf("MODBUS: Write register %d with value %d\n", reg_addr, reg_value);
-
     // Write register
     ctx->conf.write(reg_addr + 40001, reg_value);
 
@@ -328,8 +318,6 @@ void Modbus_ProcessWriteRegisters(_stmodbus_context_t *ctx)
     uint16_t start_addr = (ctx->header[2] << 8) | ctx->header[3];
     uint16_t reg_count = (ctx->header[4] << 8) | ctx->header[5];
     uint8_t byte_count = ctx->header[6];
-
-    // printf("MODBUS: Write %d registers starting at %d\n", reg_count, start_addr);
 
     // Validate parameters
     if (reg_count == 0 || reg_count > 123 || byte_count != reg_count * 2)

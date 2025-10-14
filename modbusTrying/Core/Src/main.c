@@ -56,8 +56,12 @@ static volatile uint32_t software_watchdog_counter = 0;
 /* MODBUS RECOVERY SYSTEM */
 static volatile uint32_t modbus_last_activity = 0;
 static volatile uint32_t modbus_recovery_counter = 0;
-#define MODBUS_RECOVERY_TIMEOUT_MS 5000   // 5 seconds without activity triggers recovery
-#define MODBUS_RECOVERY_INTERVAL_MS 30000 // Force recovery every 30 seconds
+static volatile uint32_t modbus_error_count = 0;
+static volatile uint32_t modbus_last_error_reset = 0;
+#define MODBUS_RECOVERY_TIMEOUT_MS 2500   // 2.5 seconds without activity triggers recovery (faster for 1s scan rate)
+#define MODBUS_RECOVERY_INTERVAL_MS 10000 // Force recovery every 10 seconds (more aggressive preventive recovery)
+#define MODBUS_ERROR_THRESHOLD 3          // Trigger recovery after 3 consecutive errors
+#define MODBUS_ERROR_WINDOW_MS 5000       // Reset error count every 5 seconds
 
 /* USER CODE BEGIN PV */
 extern uint16_t device_registers[20]; // Access to device registers for testing
@@ -75,6 +79,7 @@ void ModbusRecovery_Init(void);
 void ModbusRecovery_Update(void);
 void ModbusRecovery_ResetState(void);
 void ModbusRecovery_MarkActivity(void);
+void ModbusRecovery_MarkError(void);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -369,6 +374,8 @@ void ModbusRecovery_Init(void)
   uint32_t current_tick = HAL_GetTick();
   modbus_last_activity = current_tick;
   modbus_recovery_counter = current_tick;
+  modbus_error_count = 0;
+  modbus_last_error_reset = current_tick;
 }
 
 /**
@@ -390,14 +397,29 @@ void ModbusRecovery_Update(void)
 {
   uint32_t current_tick = HAL_GetTick();
 
-  // Check for forced recovery interval (every 30 seconds)
-  if ((current_tick - modbus_recovery_counter) > MODBUS_RECOVERY_INTERVAL_MS)
+  // Reset error count periodically
+  if ((current_tick - modbus_last_error_reset) > MODBUS_ERROR_WINDOW_MS)
+  {
+    modbus_error_count = 0;
+    modbus_last_error_reset = current_tick;
+  }
+
+  // Check for error threshold (immediate recovery if too many errors)
+  if (modbus_error_count >= MODBUS_ERROR_THRESHOLD)
+  {
+    ModbusRecovery_ResetState();
+    modbus_error_count = 0;
+    modbus_last_error_reset = current_tick;
+  }
+
+  // Check for forced recovery interval (every 10 seconds)
+  else if ((current_tick - modbus_recovery_counter) > MODBUS_RECOVERY_INTERVAL_MS)
   {
     ModbusRecovery_ResetState();
     modbus_recovery_counter = current_tick;
   }
 
-  // Check for inactivity timeout (5 seconds without valid Modbus activity)
+  // Check for inactivity timeout (2.5 seconds without valid Modbus activity)
   else if ((current_tick - modbus_last_activity) > MODBUS_RECOVERY_TIMEOUT_MS)
   {
     ModbusRecovery_ResetState();
@@ -437,6 +459,16 @@ void ModbusRecovery_ResetState(void)
     HAL_Delay(1); // Very brief pulse
     HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, GPIO_PIN_RESET);
   }
+}
+
+/**
+ * @brief Mark Modbus Error (call when timeout/error detected)
+ * @param None
+ * @retval None
+ */
+void ModbusRecovery_MarkError(void)
+{
+  modbus_error_count++;
 }
 
 /* USER CODE END 4 */

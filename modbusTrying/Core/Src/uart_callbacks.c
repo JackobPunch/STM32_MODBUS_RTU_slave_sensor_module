@@ -69,6 +69,9 @@ void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart)
 {
     if (huart == &huart1)
     {
+        // Mark error for recovery system
+        ModbusRecovery_MarkError();
+
         // Handle UART errors
         __HAL_UART_CLEAR_OREFLAG(huart);
         __HAL_UART_CLEAR_NEFLAG(huart);

@@ -20,6 +20,7 @@ extern "C"
 
     /* External functions from main.c */
     extern void ModbusRecovery_MarkActivity(void);
+    extern void ModbusRecovery_MarkError(void);
 
 #ifdef __cplusplus
 }

@@ -17,6 +17,7 @@ extern "C"
 
     /* Exported functions -------------------------------------------------------*/
     void UART_Callbacks_Init(void);
+    void UART_Callbacks_ProcessTimeout(void);
 
 #ifdef __cplusplus
 }

@@ -63,7 +63,7 @@ void _exit(int status)
   } /* Make sure we hang here */
 }
 
-int _read(int file, char *ptr, int len)
+__attribute__((weak)) int _read(int file, char *ptr, int len)
 {
   (void)file;
   int DataIdx;
@@ -76,7 +76,7 @@ int _read(int file, char *ptr, int len)
   return len;
 }
 
-int _write(int file, char *ptr, int len)
+__attribute__((weak)) int _write(int file, char *ptr, int len)
 {
   (void)file;
   int DataIdx;

@@ -33,7 +33,8 @@
 #define _STMODBUS_CONF_H_
 
 #ifdef _cplusplus
-extern "C" {
+extern "C"
+{
 #endif
 
 //-------- <<< Use Configuration Wizard in Context Menu >>> --------------------
@@ -43,7 +44,11 @@ extern "C" {
 // <q>  Use Modbus-ASCII
 #define STMODBUS_USE_ASCII 0
 // <q>  Use critical sections (recommended)
-#define STMODBUS_USE_CRITICAL_SECTIONS 0
+#define STMODBUS_USE_CRITICAL_SECTIONS 1
+
+// Critical section implementation for bare metal (no RTOS)
+#define stmbEnterCriticalSection __disable_irq()
+#define stmbLeaveCriticalSection __enable_irq()
 // <o> Count modbus context
 // <i> Don't set a lot of count for memory saving
 #define STMODBUS_COUNT_CONTEXT 1
@@ -73,7 +78,7 @@ extern "C" {
 
 //	<h> Default Stack OS module parameters
 //<o> Debug information messages level <4=>idle (lowest) <5=>low <6=>below
-//normal <0=>normal (default) <1=>above normal <2=>high <3=>realtime (highest)
+// normal <0=>normal (default) <1=>above normal <2=>high <3=>realtime (highest)
 //<i> Thread priority
 #define STACKOS_MODULE_THREAD_LEVEL 0
 //<o> Thread stack size
@@ -85,9 +90,9 @@ extern "C" {
 #define STOS_TESTUNIT 1
 // <q> Enable exclusive test unit
 #define STOS_TESTUNIT_EXCLUSIVE 0
-//	</e>
+    //	</e>
 
-//-------- <<< end of configuration section >>>    --------------------
+    //-------- <<< end of configuration section >>>    --------------------
 
 #include "mbutils.h"
 

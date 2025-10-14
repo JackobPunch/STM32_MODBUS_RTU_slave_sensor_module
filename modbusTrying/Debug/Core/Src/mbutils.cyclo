@@ -1,2 +1,0 @@
-../Core/Src/mbutils.c:100:10:mbus_crc16	1
-../Core/Src/mbutils.c:106:32:mbus_tickcount	1

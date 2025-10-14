@@ -191,7 +191,22 @@ Even though printf statements are commented out, the stdio library may still att
 - **Result**: Our implementations override libc's, eliminating warnings
 - **Status**: Build should now complete without warnings
 
-## Success Criteria
+### Debug: Standalone Mode Failure (October 14, 2025)
+
+- **Issue**: Device works in debug mode but fails in standalone (no LED pulsing, no Modbus)
+- **Root Cause**: Unknown - possibly clock configuration, initialization failure, or timing issue
+- **Solution**: Added LED indicators for each initialization step using separate GPIO pins; increased stack size from 1KB to 2KB and heap from 512B to 1KB to prevent overflow
+- **Debug Pins**:
+  - PA0: GPIO init completed
+  - PA1: DMA init completed  
+  - PA2: UART init completed
+  - PA3: UART callbacks init completed
+  - PA4: Modbus init completed
+  - PA5: Test functions init completed
+  - PA6: Heartbeat (1Hz toggle in main loop)
+- **Expected Behavior**: All pins PA0-PA5 high, PA6 toggling every second in working standalone
+- **Failure Diagnosis**: Check which pins are high to see where initialization stops
+- **Status**: Increased memory allocation, ready for re-testing## Success Criteria
 
 - **Standalone mode works**: Modbus communication functional without debugger
 - **Heartbeat LED active**: PA4 toggles at 1Hz indicating main loop execution

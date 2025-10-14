@@ -96,19 +96,25 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_SET); // Debug: Init step 1 - GPIO
+
   MX_DMA_Init();
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_SET); // Debug: Init step 2 - DMA
+
   MX_USART1_UART_Init();
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_2, GPIO_PIN_SET); // Debug: Init step 3 - UART
+
   /* USER CODE BEGIN 2 */
 
   // printf("Starting Modbus RTU Slave...\n"); // Removed to prevent timing delays
 
   // Initialize UART callbacks
   UART_Callbacks_Init();
-  // printf("UART callbacks initialized\n"); // Removed
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, GPIO_PIN_SET); // Debug: Init step 4 - UART callbacks
 
   // Initialize Modbus RTU slave
   Modbus_Init();
-  // printf("Modbus initialized\n"); // Removed
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4, GPIO_PIN_SET); // Debug: Init step 5 - Modbus
 
   // Debug: Check array contents at startup (commented out to avoid timing delays)
   // printf("Array check: [0]=0x%04X [1]=0x%04X [12]=0x%04X [13]=0x%04X\n",
@@ -117,6 +123,8 @@ int main(void)
 
   // Initialize test functions
   Modbus_Test_Init();
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET); // Debug: Init step 6 - Test functions
+
   // printf("Test functions initialized\n"); // Removed
 
   // printf("System ready! Slave address: 0x01\n"); // Removed
@@ -137,7 +145,7 @@ int main(void)
     if (heartbeat_counter >= 10) // 10 * 100ms = 1 second
     {
       heartbeat_counter = 0;
-      HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_4);
+      HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_6);
     }
 
     // Update sensor values periodically
@@ -279,10 +287,10 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOA_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_4 | GPIO_PIN_5 | GPIO_PIN_6, GPIO_PIN_RESET);
 
-  /*Configure GPIO pin : PA4 */
-  GPIO_InitStruct.Pin = GPIO_PIN_4;
+  /*Configure GPIO pins : PA0 PA1 PA2 PA3 PA4 PA5 PA6 */
+  GPIO_InitStruct.Pin = GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_4 | GPIO_PIN_5 | GPIO_PIN_6;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;

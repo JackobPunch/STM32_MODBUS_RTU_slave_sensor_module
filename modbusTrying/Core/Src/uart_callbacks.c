@@ -41,6 +41,9 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
         // Get Modbus context
         mbus_t modbus_ctx = Modbus_GetContext();
 
+        // Mark Modbus activity for recovery system
+        ModbusRecovery_MarkActivity();
+
         // Validate context before processing
         if (modbus_ctx >= 0)
         {
@@ -49,9 +52,7 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
             {
                 mbus_poll(modbus_ctx, modbus_rx_buffer[i]);
             }
-        }
-
-        // Clear the UART idle flag
+        } // Clear the UART idle flag
         __HAL_UART_CLEAR_IDLEFLAG(huart);
 
         // Restart DMA reception for next frame

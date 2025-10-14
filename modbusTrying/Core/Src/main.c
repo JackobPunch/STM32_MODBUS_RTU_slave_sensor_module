@@ -53,6 +53,12 @@ DMA_HandleTypeDef hdma_usart1_tx;
 static volatile uint32_t software_watchdog_counter = 0;
 #define SOFTWARE_WATCHDOG_TIMEOUT_MS 10000 // 10 seconds timeout
 
+/* MODBUS RECOVERY SYSTEM */
+static volatile uint32_t modbus_last_activity = 0;
+static volatile uint32_t modbus_recovery_counter = 0;
+#define MODBUS_RECOVERY_TIMEOUT_MS 5000   // 5 seconds without activity triggers recovery
+#define MODBUS_RECOVERY_INTERVAL_MS 30000 // Force recovery every 30 seconds
+
 /* USER CODE BEGIN PV */
 extern uint16_t device_registers[20]; // Access to device registers for testing
 /* USER CODE END PV */
@@ -65,6 +71,10 @@ static void MX_USART1_UART_Init(void);
 /* USER CODE BEGIN PFP */
 void SoftwareWatchdog_Init(void);
 void SoftwareWatchdog_Refresh(void);
+void ModbusRecovery_Init(void);
+void ModbusRecovery_Update(void);
+void ModbusRecovery_ResetState(void);
+void ModbusRecovery_MarkActivity(void);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -132,6 +142,9 @@ int main(void)
   Modbus_Test_Init();
   HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET); // Debug: Init step 6 - Test functions
 
+  // Initialize Modbus recovery system
+  ModbusRecovery_Init();
+
   // printf("Test functions initialized\n"); // Removed
 
   // printf("System ready! Slave address: 0x01\n"); // Removed
@@ -160,6 +173,9 @@ int main(void)
 
     // Process Modbus first (highest priority)
     Modbus_Process();
+
+    // Check and handle Modbus recovery if needed
+    ModbusRecovery_Update();
 
     // Update sensor values periodically (lower priority)
     Modbus_Device_UpdateSensors();
@@ -327,10 +343,10 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOA_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_4 | GPIO_PIN_5 | GPIO_PIN_6, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_4 | GPIO_PIN_5 | GPIO_PIN_6 | GPIO_PIN_7, GPIO_PIN_RESET);
 
-  /*Configure GPIO pins : PA0 PA1 PA2 PA3 PA4 PA5 PA6 */
-  GPIO_InitStruct.Pin = GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_4 | GPIO_PIN_5 | GPIO_PIN_6;
+  /*Configure GPIO pins : PA0 PA1 PA2 PA3 PA4 PA5 PA6 PA7 */
+  GPIO_InitStruct.Pin = GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_4 | GPIO_PIN_5 | GPIO_PIN_6 | GPIO_PIN_7;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -342,6 +358,86 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+
+/**
+ * @brief Initialize Modbus Recovery System
+ * @param None
+ * @retval None
+ */
+void ModbusRecovery_Init(void)
+{
+  uint32_t current_tick = HAL_GetTick();
+  modbus_last_activity = current_tick;
+  modbus_recovery_counter = current_tick;
+}
+
+/**
+ * @brief Mark Modbus Activity (call from UART callback)
+ * @param None
+ * @retval None
+ */
+void ModbusRecovery_MarkActivity(void)
+{
+  modbus_last_activity = HAL_GetTick();
+}
+
+/**
+ * @brief Update Modbus Recovery System
+ * @param None
+ * @retval None
+ */
+void ModbusRecovery_Update(void)
+{
+  uint32_t current_tick = HAL_GetTick();
+
+  // Check for forced recovery interval (every 30 seconds)
+  if ((current_tick - modbus_recovery_counter) > MODBUS_RECOVERY_INTERVAL_MS)
+  {
+    ModbusRecovery_ResetState();
+    modbus_recovery_counter = current_tick;
+  }
+
+  // Check for inactivity timeout (5 seconds without valid Modbus activity)
+  else if ((current_tick - modbus_last_activity) > MODBUS_RECOVERY_TIMEOUT_MS)
+  {
+    ModbusRecovery_ResetState();
+    modbus_last_activity = current_tick; // Reset timer to prevent immediate re-trigger
+  }
+}
+
+/**
+ * @brief Reset Modbus State Machine
+ * @param None
+ * @retval None
+ */
+void ModbusRecovery_ResetState(void)
+{
+  // Get Modbus context
+  mbus_t modbus_ctx = Modbus_GetContext();
+
+  if (modbus_ctx >= 0)
+  {
+    // Flush any pending data/state
+    mbus_flush(modbus_ctx);
+
+    // Restart DMA reception to clear any stuck states
+    HAL_UART_DMAStop(&huart1);
+    HAL_UARTEx_ReceiveToIdle_DMA(&huart1, modbus_rx_buffer, sizeof(modbus_rx_buffer));
+
+    // Clear any UART error flags
+    __HAL_UART_CLEAR_OREFLAG(&huart1);
+    __HAL_UART_CLEAR_NEFLAG(&huart1);
+    __HAL_UART_CLEAR_FEFLAG(&huart1);
+    __HAL_UART_CLEAR_PEFLAG(&huart1);
+    __HAL_UART_CLEAR_IDLEFLAG(&huart1);
+
+    // Brief pulse on PA7 for debugging (if available)
+    // This helps identify when recovery occurs during testing
+    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, GPIO_PIN_SET);
+    HAL_Delay(1); // Very brief pulse
+    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, GPIO_PIN_RESET);
+  }
+}
 
 /* USER CODE END 4 */
 

@@ -18,8 +18,10 @@ This project demonstrates a fully working Modbus RTU slave implementation on the
 - **LED debug system** (PA0-PA6) for operation monitoring
 - **Standalone mode compatible** (syscalls properly configured)
 - **Software watchdog protection** (10-second timeout with auto-reset)
+- **Modbus recovery system** (automatic state reset on communication issues)
 - **Optimized timing** (reduced interference, faster response)
 - **Robust error handling** in UART callbacks
+- **Startup synchronization protection** (handles RS485 module connection issues)
 - **Tested with ModbusPoll**
 - **Ready for real sensor integration**
 
@@ -48,6 +50,7 @@ The firmware includes a comprehensive LED debugging system for monitoring operat
 | PA4     | UART Ready        | UART communication initialized               |
 | PA5     | Modbus Ready      | Modbus protocol initialized                  |
 | PA6     | Heartbeat         | Toggles every ~10 seconds (optimized timing) |
+| PA7     | Modbus Recovery   | Brief pulse when Modbus state is reset       |
 
 ## Project Structure
 
@@ -121,6 +124,31 @@ The firmware includes a software watchdog that monitors system health:
 - **SysTick-based** - uses HAL_GetTick() for timing
 - **Background protection** - runs transparently during normal operation
 
+### 🔄 Modbus Recovery System
+
+**NEW**: Advanced recovery system to prevent Modbus communication getting "stuck":
+
+**Problem Solved**:
+
+- RS485-to-USB module connected during STM32 startup can cause Modbus state machine desynchronization
+- Once stuck, normal reconnection doesn't help
+- Timeouts occur even though system is running normally (heartbeat works)
+
+**Solution Implementation**:
+
+- **Activity monitoring**: Tracks valid Modbus communication
+- **Automatic state reset**: Flushes Modbus state when no activity for 5 seconds
+- **Periodic recovery**: Forces state reset every 30 seconds as preventive measure
+- **DMA restart**: Clears any stuck UART DMA states
+- **Error flag clearing**: Resets all UART error conditions
+- **Debug indicator**: PA7 pulses briefly when recovery occurs (for testing)
+
+**Recovery Triggers**:
+
+1. No Modbus activity for 5 seconds → State reset
+2. Every 30 seconds → Preventive state reset
+3. Uses `mbus_flush()` and DMA restart for complete recovery
+
 ### Modbus Testing
 
 ```bash
@@ -144,6 +172,7 @@ During operation, observe these LEDs:
 5. **PA4**: UART ready
 6. **PA5**: Modbus ready
 7. **PA6**: Heartbeat (toggles ~10 seconds)
+8. **PA7**: Modbus recovery (brief pulse during state reset)
 
 ## Troubleshooting
 
@@ -161,6 +190,8 @@ During operation, observe these LEDs:
 - **Timeout errors**: Ensure no unnecessary delays in interrupt handlers
 - **Random timeouts**: Power cycle the board after uploading new code
 - **Communication freezes**: Software watchdog will auto-reset after 10 seconds
+- **Modbus "stuck" state**: Recovery system will reset state automatically within 5 seconds
+- **RS485 connection during startup**: Modbus recovery system handles synchronization issues
 
 ### Communication Optimization
 

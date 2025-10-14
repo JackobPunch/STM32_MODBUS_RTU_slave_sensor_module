@@ -18,6 +18,9 @@ extern "C"
     /* Exported functions -------------------------------------------------------*/
     void UART_Callbacks_Init(void);
 
+    /* External functions from main.c */
+    extern void ModbusRecovery_MarkActivity(void);
+
 #ifdef __cplusplus
 }
 #endif

@@ -2655,3 +2655,6 @@ java.lang.Exception: Project 'ledBlinking' is not open.
 	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:668)
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:605)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1481)
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-10-14 16:29:19.764
+!MESSAGE Indexed 'ModbusWithSensorsNoRTOS' (19 sources, 81 headers) in 2.98 sec: 4,758 declarations; 24,788 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.0068%)

@@ -244,13 +244,13 @@ If you experience standalone mode issues on other boards, check:
 
 **Tested Extensively with ModbusPoll (1000ms scan rate):**
 
-| Metric | Before Optimization | After Optimization | Improvement |
-|--------|--------------------|--------------------|-------------|
-| **Successful Tx** | 174 | 194 | +11% |
-| **Errors** | 115 | 18 | **-84%** |
-| **Error Rate** | ~40% | **~9%** | **4.4x better** |
-| **Recovery Time** | Manual intervention needed | **Automatic <2.5s** | Fully automated |
-| **Startup Issues** | RS485 connection problems | **Handled automatically** | Robust |
+| Metric             | Before Optimization        | After Optimization        | Improvement     |
+| ------------------ | -------------------------- | ------------------------- | --------------- |
+| **Successful Tx**  | 174                        | 194                       | +11%            |
+| **Errors**         | 115                        | 18                        | **-84%**        |
+| **Error Rate**     | ~40%                       | **~9%**                   | **4.4x better** |
+| **Recovery Time**  | Manual intervention needed | **Automatic <2.5s**       | Fully automated |
+| **Startup Issues** | RS485 connection problems  | **Handled automatically** | Robust          |
 
 **Key Achievement**: **Reduced error rate from 40% to 9%** - making this suitable for production use.
 
@@ -262,11 +262,12 @@ This project is **production-ready** and serves as an **excellent foundation** f
 ✅ **Sensor monitoring systems** (ready for MQ-2, SCD30, etc.)  
 ✅ **Reliable embedded Modbus applications**  
 ✅ **Educational/reference implementation**  
-✅ **Starting point for custom sensor projects**  
+✅ **Starting point for custom sensor projects**
 
 **Proven Features:**
+
 - Handles RS485 startup synchronization issues
-- Automatic recovery from communication errors  
+- Automatic recovery from communication errors
 - Works reliably in both debug and standalone modes
 - Comprehensive LED debugging system
 - Optimized for real-world industrial environments
@@ -276,13 +277,15 @@ This project is **production-ready** and serves as an **excellent foundation** f
 This optimized Modbus implementation is **ready for real sensor integration**:
 
 ### **Recommended Sensor Extensions:**
+
 - **MQ-2 Gas Sensor**: Air quality monitoring
-- **SCD30 CO₂ Sensor**: Environmental monitoring  
+- **SCD30 CO₂ Sensor**: Environmental monitoring
 - **Temperature/Humidity sensors**: Climate control
 - **Pressure sensors**: Industrial monitoring
 - **Custom analog sensors**: via STM32 ADC
 
 ### **Integration Guide:**
+
 1. **Keep this project as reference**: Proven working Modbus communication
 2. **Copy the optimized code**: Use the recovery system and timing optimizations
 3. **Replace test registers**: Map real sensor data to Modbus registers
@@ -290,6 +293,7 @@ This optimized Modbus implementation is **ready for real sensor integration**:
 5. **Maintain recovery system**: Keep the error handling for production reliability
 
 ### **Development Notes:**
+
 - **Modbus foundation**: Communication layer is fully optimized and tested
 - **LED debugging**: Keep PA0-PA7 system for new sensor debugging
 - **Recovery system**: Essential for reliable sensor data collection
@@ -300,7 +304,7 @@ This optimized Modbus implementation is **ready for real sensor integration**:
 
 - This project is **self-contained** with all necessary Modbus protocol files
 - **Production-tested** with ModbusPoll desktop application
-- **Optimized timing** and **automatic error recovery** 
+- **Optimized timing** and **automatic error recovery**
 - **Simple and efficient** implementation suitable for industrial use
 - **No external dependencies** beyond STM32 HAL
 - **Perfect foundation** for sensor integration projects

@@ -11,10 +11,6 @@
 /* Private variables ---------------------------------------------------------*/
 extern UART_HandleTypeDef huart1;
 
-/* Buffer management variables */
-static volatile uint8_t uart_busy = 0;
-static uint32_t frame_timeout_counter = 0;
-
 /* Private function prototypes -----------------------------------------------*/
 
 /* Exported functions -------------------------------------------------------*/
@@ -26,40 +22,8 @@ static uint32_t frame_timeout_counter = 0;
  */
 void UART_Callbacks_Init(void)
 {
-    // Reset state variables
-    uart_busy = 0;
-    frame_timeout_counter = 0;
-}
-
-/**
- * @brief  Check for UART timeout and recovery
- * @param  None
- * @retval None
- * @note   Call this function periodically from main loop
- */
-void UART_Callbacks_ProcessTimeout(void)
-{
-    // Increment timeout counter if UART is busy too long
-    if (uart_busy)
-    {
-        frame_timeout_counter++;
-
-        // If timeout exceeded (adjust value as needed)
-        if (frame_timeout_counter > 1000) // ~100ms at 100ms loop timing
-        {
-            // Force recovery
-            uart_busy = 0;
-            frame_timeout_counter = 0;
-
-            // Restart UART DMA
-            HAL_UART_AbortReceive(&huart1);
-            HAL_UARTEx_ReceiveToIdle_DMA(&huart1, modbus_rx_buffer, sizeof(modbus_rx_buffer));
-        }
-    }
-    else
-    {
-        frame_timeout_counter = 0;
-    }
+    // UART callbacks are handled by HAL, this function can be used
+    // for any additional initialization if needed
 }
 
 /* HAL UART Callbacks -------------------------------------------------------*/
@@ -72,34 +36,19 @@ void UART_Callbacks_ProcessTimeout(void)
  */
 void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
 {
-    if (huart == &huart1 && Size > 0)
+    if (huart == &huart1)
     {
-        // Set busy flag to prevent concurrent processing
-        uart_busy = 1;
-        frame_timeout_counter = 0;
-
         // Get Modbus context
         mbus_t modbus_ctx = Modbus_GetContext();
 
-        // Validate size to prevent buffer overflow
-        if (Size <= sizeof(modbus_rx_buffer))
+        // Process received Modbus data byte by byte
+        for (uint16_t i = 0; i < Size; i++)
         {
-            // Process received Modbus data byte by byte
-            for (uint16_t i = 0; i < Size; i++)
-            {
-                mbus_poll(modbus_ctx, modbus_rx_buffer[i]);
-            }
+            mbus_poll(modbus_ctx, modbus_rx_buffer[i]);
         }
 
         // Clear the UART idle flag
         __HAL_UART_CLEAR_IDLEFLAG(huart);
-
-        // Small delay to ensure processing is complete
-        for (volatile int i = 0; i < 100; i++)
-            ;
-
-        // Clear busy flag before restarting
-        uart_busy = 0;
 
         // Restart DMA reception for next frame
         HAL_UARTEx_ReceiveToIdle_DMA(&huart1, modbus_rx_buffer, sizeof(modbus_rx_buffer));
@@ -115,27 +64,10 @@ void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart)
 {
     if (huart == &huart1)
     {
-        // Clear busy flag on error
-        uart_busy = 0;
-
         // Handle UART errors
         __HAL_UART_CLEAR_OREFLAG(huart);
         __HAL_UART_CLEAR_NEFLAG(huart);
         __HAL_UART_CLEAR_FEFLAG(huart);
-        __HAL_UART_CLEAR_PEFLAG(huart);
-        __HAL_UART_CLEAR_IDLEFLAG(huart);
-
-        // Reset Modbus state on error
-        mbus_t modbus_ctx = Modbus_GetContext();
-        if (modbus_ctx >= 0)
-        {
-            // Modbus context is valid, allow library to reset internally
-            // The mbus_t is just an index, not a pointer to the actual context
-        }
-
-        // Add delay to allow error state to clear
-        for (volatile int i = 0; i < 1000; i++)
-            ;
 
         // Restart DMA reception
         HAL_UARTEx_ReceiveToIdle_DMA(&huart1, modbus_rx_buffer, sizeof(modbus_rx_buffer));

@@ -44,11 +44,7 @@ extern "C"
 // <q>  Use Modbus-ASCII
 #define STMODBUS_USE_ASCII 0
 // <q>  Use critical sections (recommended)
-#define STMODBUS_USE_CRITICAL_SECTIONS 1
-
-// Critical section implementation for bare metal (no RTOS)
-#define stmbEnterCriticalSection __disable_irq()
-#define stmbLeaveCriticalSection __enable_irq()
+#define STMODBUS_USE_CRITICAL_SECTIONS 0
 // <o> Count modbus context
 // <i> Don't set a lot of count for memory saving
 #define STMODBUS_COUNT_CONTEXT 1

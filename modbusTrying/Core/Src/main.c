@@ -155,12 +155,7 @@ int main(void)
     Modbus_Test_Update();
 
     // Process Modbus (if needed)
-    Modbus_Process();
-
-    // Process UART timeout monitoring
-    UART_Callbacks_ProcessTimeout();
-
-    // Test: Modify register values every 3 seconds to verify callbacks are working
+    Modbus_Process(); // Test: Modify register values every 3 seconds to verify callbacks are working
     // DISABLED temporarily to test if this was causing timeouts
     /*
     test_counter++;

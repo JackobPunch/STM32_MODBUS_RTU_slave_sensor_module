@@ -36,15 +36,19 @@ void UART_Callbacks_Init(void)
  */
 void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
 {
-    if (huart == &huart1)
+    if (huart == &huart1 && Size > 0)
     {
         // Get Modbus context
         mbus_t modbus_ctx = Modbus_GetContext();
 
-        // Process received Modbus data byte by byte
-        for (uint16_t i = 0; i < Size; i++)
+        // Validate context before processing
+        if (modbus_ctx >= 0)
         {
-            mbus_poll(modbus_ctx, modbus_rx_buffer[i]);
+            // Process received Modbus data byte by byte
+            for (uint16_t i = 0; i < Size && i < sizeof(modbus_rx_buffer); i++)
+            {
+                mbus_poll(modbus_ctx, modbus_rx_buffer[i]);
+            }
         }
 
         // Clear the UART idle flag

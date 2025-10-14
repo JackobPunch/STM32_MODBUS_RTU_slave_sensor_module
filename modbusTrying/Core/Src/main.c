@@ -49,6 +49,10 @@ UART_HandleTypeDef huart1;
 DMA_HandleTypeDef hdma_usart1_rx;
 DMA_HandleTypeDef hdma_usart1_tx;
 
+/* SOFTWARE WATCHDOG */
+static volatile uint32_t software_watchdog_counter = 0;
+#define SOFTWARE_WATCHDOG_TIMEOUT_MS 10000 // 10 seconds timeout
+
 /* USER CODE BEGIN PV */
 extern uint16_t device_registers[20]; // Access to device registers for testing
 /* USER CODE END PV */
@@ -59,7 +63,8 @@ static void MX_GPIO_Init(void);
 static void MX_DMA_Init(void);
 static void MX_USART1_UART_Init(void);
 /* USER CODE BEGIN PFP */
-
+void SoftwareWatchdog_Init(void);
+void SoftwareWatchdog_Refresh(void);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -101,6 +106,8 @@ int main(void)
   MX_DMA_Init();
   HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_SET); // Debug: Init step 2 - DMA
 
+  SoftwareWatchdog_Init(); // Initialize software watchdog for system protection
+
   MX_USART1_UART_Init();
   HAL_GPIO_WritePin(GPIOA, GPIO_PIN_2, GPIO_PIN_SET); // Debug: Init step 3 - UART
 
@@ -139,23 +146,26 @@ int main(void)
   {
     /* USER CODE BEGIN 3 */
 
-    // Heartbeat LED toggle every second for standalone debugging
+    // Refresh software watchdog to prevent system reset
+    SoftwareWatchdog_Refresh();
+
+    // Optimized heartbeat LED - much less frequent to minimize interference
     static uint32_t heartbeat_counter = 0;
     heartbeat_counter++;
-    if (heartbeat_counter >= 10) // 10 * 100ms = 1 second
+    if (heartbeat_counter >= 200) // 200 * 50ms = 10 seconds (very slow heartbeat)
     {
       heartbeat_counter = 0;
       HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_6);
     }
 
-    // Update sensor values periodically
+    // Process Modbus first (highest priority)
+    Modbus_Process();
+
+    // Update sensor values periodically (lower priority)
     Modbus_Device_UpdateSensors();
 
-    // Update test values
-    Modbus_Test_Update();
-
-    // Process Modbus (if needed)
-    Modbus_Process(); // Test: Modify register values every 3 seconds to verify callbacks are working
+    // Update test values (lowest priority)
+    Modbus_Test_Update(); // Test: Modify register values every 3 seconds to verify callbacks are working
     // DISABLED temporarily to test if this was causing timeouts
     /*
     test_counter++;
@@ -168,8 +178,9 @@ int main(void)
       }
     }
     */
-    // Add small delay to prevent busy waiting
-    HAL_Delay(100);
+
+    // Very short delay - prioritize Modbus communication responsiveness
+    HAL_Delay(10); // Reduced to 10ms for maximum Modbus responsiveness
 
     /* USER CODE END 3 */
   }
@@ -250,6 +261,36 @@ static void MX_USART1_UART_Init(void)
   /* USER CODE BEGIN USART1_Init 2 */
 
   /* USER CODE END USART1_Init 2 */
+}
+
+/**
+ * @brief Software Watchdog Initialization Function
+ * @param None
+ * @retval None
+ */
+void SoftwareWatchdog_Init(void)
+{
+  software_watchdog_counter = HAL_GetTick();
+}
+
+/**
+ * @brief Refresh Software Watchdog
+ * @param None
+ * @retval None
+ */
+void SoftwareWatchdog_Refresh(void)
+{
+  uint32_t current_tick = HAL_GetTick();
+
+  // Check if timeout occurred (accounting for tick overflow)
+  if ((current_tick - software_watchdog_counter) > SOFTWARE_WATCHDOG_TIMEOUT_MS)
+  {
+    // System appears to be stuck - perform reset
+    NVIC_SystemReset();
+  }
+
+  // Refresh the watchdog timer
+  software_watchdog_counter = current_tick;
 }
 
 /**

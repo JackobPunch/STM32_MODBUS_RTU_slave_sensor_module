@@ -1,6 +1,5 @@
-../Core/Src/modbus_device.c:17:6:Modbus_Device_PrintArray	2
-../Core/Src/modbus_device.c:35:10:Modbus_Device_GetRegister	2
-../Core/Src/modbus_device.c:49:10:Modbus_Device_Read	3
-../Core/Src/modbus_device.c:72:10:Modbus_Device_Write	3
-../Core/Src/modbus_device.c:120:6:Modbus_Device_UpdateSensors	1
-../Core/Src/modbus_device.c:136:6:Modbus_Device_SetRegister	2
+../Core/Src/modbus_device.c:24:10:Modbus_Device_GetRegister	2
+../Core/Src/modbus_device.c:38:10:Modbus_Device_Read	3
+../Core/Src/modbus_device.c:61:10:Modbus_Device_Write	3
+../Core/Src/modbus_device.c:109:6:Modbus_Device_UpdateSensors	1
+../Core/Src/modbus_device.c:125:6:Modbus_Device_SetRegister	2

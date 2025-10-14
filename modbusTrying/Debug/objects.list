@@ -6,6 +6,7 @@
 "./Core/Src/modbus_test.o"
 "./Core/Src/stm32f3xx_hal_msp.o"
 "./Core/Src/stm32f3xx_it.o"
+"./Core/Src/syscalls.o"
 "./Core/Src/sysmem.o"
 "./Core/Src/system_stm32f3xx.o"
 "./Core/Src/uart_callbacks.o"

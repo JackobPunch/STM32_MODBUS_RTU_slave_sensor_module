@@ -5,23 +5,12 @@
  */
 
 #include "modbus_device.h"
-#include <stdio.h>
 
 /* Private variables ---------------------------------------------------------*/
 // Device registers (Holding Registers - 4xxxx) - Made global like sample code
 uint16_t device_registers[20] = {
     20, 19, 18, 17, 16, 15, 14, 13, 12, 11,
     10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
-
-// Debug: Print array contents (renamed from DebugArray for clarity)
-void Modbus_Device_PrintArray(void)
-{
-    printf("Device Registers Array Contents:\n");
-    for (int i = 0; i < 20; i++)
-    {
-        printf("  [%d] 0x%04X (%d)\n", i, device_registers[i], device_registers[i]);
-    }
-}
 
 /* Private function prototypes -----------------------------------------------*/
 

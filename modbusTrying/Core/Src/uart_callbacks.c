@@ -7,7 +7,6 @@
 #include "uart_callbacks.h"
 #include "modbus_init.h"
 #include "modbus.h"
-#include <stdio.h>
 
 /* Private variables ---------------------------------------------------------*/
 extern UART_HandleTypeDef huart1;

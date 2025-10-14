@@ -8,7 +8,6 @@
 #include "main.h"
 #include "modbus_device.h"
 #include "mbutils.h"
-#include <stdio.h>
 
 /* Private variables ---------------------------------------------------------*/
 extern UART_HandleTypeDef huart1;

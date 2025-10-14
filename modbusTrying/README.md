@@ -46,6 +46,7 @@ Drivers/
 - **MCU**: STM32F303K8T6
 - **RS485**: Hardware transceiver, DE/RE pin on PA12
 - **UART**: USART1 (PA9 TX, PA10 RX)
+- **Status LED**: PA4 (toggles every 1 second to indicate operation)
 - **Termination**: 120Ω at each end of RS485 bus
 
 ## Modbus Register Map
@@ -96,15 +97,19 @@ Drivers/
 - **Timeouts/No response**: Check wiring, DE/RE pin, and baud rate.
 - **Wrong values**: Confirm register mapping and ModbusPoll address offset.
 - **CRC errors**: Check UART settings and cable quality.
+- **No operation in standalone mode**: Semi-hosting removed - check PA4 LED for heartbeat (1Hz toggle).
+- **Debug mode works but standalone fails**: Semi-hosting removed - check PA4 LED for heartbeat (1Hz toggle).
 
 ## Notes
 
 - This project is self-contained and does not require the original ModbusRep folder.
 - All Modbus protocol logic is in `Core/Src/modbus.c` and `Core/Src/mbutils.c`.
+- Semi-hosting dependencies removed for standalone operation.
 - The code is ready for extension with FreeRTOS or real sensor drivers.
 
 ---
 
 **Author:** Your Name / Team  
 **License:** MIT  
-**Last updated:** September 2025
+**Version:** 1.1 (Semi-hosting removed for standalone operation)  
+**Last updated:** October 2025

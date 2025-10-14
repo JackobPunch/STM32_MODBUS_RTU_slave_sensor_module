@@ -27,7 +27,6 @@
 #include "modbus_device.h"
 #include "uart_callbacks.h"
 #include "modbus_test.h"
-#include <stdio.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -60,7 +59,7 @@ static void MX_GPIO_Init(void);
 static void MX_DMA_Init(void);
 static void MX_USART1_UART_Init(void);
 /* USER CODE BEGIN PFP */
-extern void initialise_monitor_handles(void);
+
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -76,7 +75,7 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
-  initialise_monitor_handles();
+  // initialise_monitor_handles(); // Removed - causes issues in standalone mode
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -131,6 +130,15 @@ int main(void)
   while (1)
   {
     /* USER CODE BEGIN 3 */
+
+    // Heartbeat LED toggle every second for standalone debugging
+    static uint32_t heartbeat_counter = 0;
+    heartbeat_counter++;
+    if (heartbeat_counter >= 10) // 10 * 100ms = 1 second
+    {
+      heartbeat_counter = 0;
+      HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_4);
+    }
 
     // Update sensor values periodically
     Modbus_Device_UpdateSensors();

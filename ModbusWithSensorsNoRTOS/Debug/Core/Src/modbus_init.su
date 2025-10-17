@@ -1,0 +1,4 @@
+../Core/Src/modbus_init.c:29:6:Modbus_Init	8	static
+../Core/Src/modbus_init.c:97:6:Modbus_Process	4	static
+../Core/Src/modbus_init.c:112:12:Modbus_SendData	24	static
+../Core/Src/modbus_init.c:143:8:Modbus_GetContext	4	static

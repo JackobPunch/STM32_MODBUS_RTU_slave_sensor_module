@@ -315,7 +315,7 @@ HAL_StatusTypeDef SCD30_ReadMeasurement(float *co2, float *temperature, float *h
 
     // Convert from big-endian to little-endian and copy to float
     // SCD30 sends data in big-endian format, STM32 uses little-endian
-    // So we reverse the byte order: [MSB, ..., LSB] -> [LSB, ..., MSB]
+    // Use the exact same method as working SCD30 project
     uint8_t co2_bytes[4] = {data[3], data[2], data[1], data[0]};
     uint8_t temperature_bytes[4] = {data[7], data[6], data[5], data[4]};
     uint8_t humidity_bytes[4] = {data[11], data[10], data[9], data[8]};
@@ -335,15 +335,44 @@ HAL_StatusTypeDef SCD30_ReadMeasurement(float *co2, float *temperature, float *h
 HAL_StatusTypeDef SCD30_UpdateData(void)
 {
     // Check if data is ready
-    if (SCD30_DataReady(&sensor_data.scd30_data_ready) != HAL_OK)
+    HAL_StatusTypeDef status = SCD30_DataReady(&sensor_data.scd30_data_ready);
+    if (status != HAL_OK)
+    {
+        // Communication failed, reset values to indicate error
+        sensor_data.scd30_co2 = 0.0f;
+        sensor_data.scd30_temperature = -273.15f; // Absolute zero indicates error
+        sensor_data.scd30_humidity = 0.0f;
+        sensor_data.scd30_data_ready = 0;
         return HAL_ERROR;
+    }
 
     // Read measurement if data is ready
     if (sensor_data.scd30_data_ready)
     {
-        return SCD30_ReadMeasurement(&sensor_data.scd30_co2,
-                                     &sensor_data.scd30_temperature,
-                                     &sensor_data.scd30_humidity);
+        status = SCD30_ReadMeasurement(&sensor_data.scd30_co2,
+                                       &sensor_data.scd30_temperature,
+                                       &sensor_data.scd30_humidity);
+
+        if (status != HAL_OK)
+        {
+            // Read failed, reset values to indicate error
+            sensor_data.scd30_co2 = 0.0f;
+            sensor_data.scd30_temperature = -273.15f; // Absolute zero indicates error
+            sensor_data.scd30_humidity = 0.0f;
+            return HAL_ERROR;
+        }
+
+        // Validate readings are reasonable
+        if (sensor_data.scd30_temperature < -40.0f || sensor_data.scd30_temperature > 70.0f ||
+            sensor_data.scd30_humidity < 0.0f || sensor_data.scd30_humidity > 100.0f ||
+            sensor_data.scd30_co2 < 0.0f || sensor_data.scd30_co2 > 40000.0f)
+        {
+            // Invalid readings, reset to error values
+            sensor_data.scd30_co2 = 0.0f;
+            sensor_data.scd30_temperature = -273.15f; // Absolute zero indicates error
+            sensor_data.scd30_humidity = 0.0f;
+            return HAL_ERROR;
+        }
     }
 
     return HAL_OK;

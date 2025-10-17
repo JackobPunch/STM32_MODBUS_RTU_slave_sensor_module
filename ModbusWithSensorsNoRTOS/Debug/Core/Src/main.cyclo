@@ -1,0 +1,13 @@
+../Core/Src/main.c:84:6:ModbusRecovery_MarkActivity	1
+../Core/Src/main.c:95:6:ModbusRecovery_MarkError	1
+../Core/Src/main.c:106:10:mbus_tickcount	1
+../Core/Src/main.c:116:6:HAL_TIM_PeriodElapsedCallback	2
+../Core/Src/main.c:135:5:main	2
+../Core/Src/main.c:220:6:SystemClock_Config	4
+../Core/Src/main.c:267:13:MX_ADC1_Init	7
+../Core/Src/main.c:357:13:MX_I2C1_Init	4
+../Core/Src/main.c:404:13:MX_TIM3_Init	4
+../Core/Src/main.c:448:13:MX_USART1_UART_Init	2
+../Core/Src/main.c:480:13:MX_DMA_Init	1
+../Core/Src/main.c:503:13:MX_GPIO_Init	1
+../Core/Src/main.c:533:6:Error_Handler	1

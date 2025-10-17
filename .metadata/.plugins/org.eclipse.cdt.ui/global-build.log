@@ -1,4 +1,11 @@
-16:06:30 **** Build of configuration Debug for project modbusTrying ****
+00:41:26 **** Clean-only build of configuration Debug for project SCD30 ****
+make -j8 clean 
+rm -rf ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal.cyclo ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal.d ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal.o ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal.su ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.cyclo ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.d ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.o ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.su ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_dma.cyclo ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_dma.d ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_dma.o ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_dma.su ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_exti.cyclo ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_exti.d ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_exti.o ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_exti.su ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_flash.cyclo ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_flash.d ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_flash.o ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_flash.su ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_flash_ex.cyclo ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_flash_ex.d ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_flash_ex.o ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_flash_ex.su ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_gpio.cyclo ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_gpio.d ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_gpio.o ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_gpio.su ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_i2c.cyclo ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_i2c.d ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_i2c.o ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_i2c.su ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_i2c_ex.cyclo ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_i2c_ex.d ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_i2c_ex.o ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_i2c_ex.su ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_pwr.cyclo ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_pwr.d ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_pwr.o ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_pwr.su ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_pwr_ex.cyclo ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_pwr_ex.d ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_pwr_ex.o ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_pwr_ex.su ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc.cyclo ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc.d ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc.o ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc.su ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc_ex.cyclo ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc_ex.d ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc_ex.o ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc_ex.su
+rm -rf ./Core/Startup/startup_stm32f303k8tx.d ./Core/Startup/startup_stm32f303k8tx.o
+rm -rf ./Core/Src/main.cyclo ./Core/Src/main.d ./Core/Src/main.o ./Core/Src/main.su ./Core/Src/scd30.cyclo ./Core/Src/scd30.d ./Core/Src/scd30.o ./Core/Src/scd30.su ./Core/Src/stm32f3xx_hal_msp.cyclo ./Core/Src/stm32f3xx_hal_msp.d ./Core/Src/stm32f3xx_hal_msp.o ./Core/Src/stm32f3xx_hal_msp.su ./Core/Src/stm32f3xx_it.cyclo ./Core/Src/stm32f3xx_it.d ./Core/Src/stm32f3xx_it.o ./Core/Src/stm32f3xx_it.su ./Core/Src/sysmem.cyclo ./Core/Src/sysmem.d ./Core/Src/sysmem.o ./Core/Src/sysmem.su ./Core/Src/system_stm32f3xx.cyclo ./Core/Src/system_stm32f3xx.d ./Core/Src/system_stm32f3xx.o ./Core/Src/system_stm32f3xx.su
+rm -rf SCD30.elf SCD30.list SCD30.map default.size.stdout
+ 
+00:41:26 **** Build of configuration Debug for project SCD30 ****
 make -j8 all 
 arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal.o"
 arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.o"
@@ -13,50 +20,119 @@ arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_pwr.c" -mcp
 arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_pwr_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_pwr_ex.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_pwr_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_pwr_ex.o"
 arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc.o"
 arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc_ex.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc_ex.o"
-arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.o"
-arm-none-eabi-gcc "../Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart_ex.d" -MT"Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart_ex.o"
 arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -x assembler-with-cpp -MMD -MP -MF"Core/Startup/startup_stm32f303k8tx.d" -MT"Core/Startup/startup_stm32f303k8tx.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Startup/startup_stm32f303k8tx.o" "../Core/Startup/startup_stm32f303k8tx.s"
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc "../Core/Src/mbutils.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/mbutils.d" -MT"Core/Src/mbutils.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/mbutils.o"
-arm-none-eabi-gcc "../Core/Src/modbus.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/modbus.d" -MT"Core/Src/modbus.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/modbus.o"
-arm-none-eabi-gcc "../Core/Src/modbus_device.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/modbus_device.d" -MT"Core/Src/modbus_device.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/modbus_device.o"
-arm-none-eabi-gcc "../Core/Src/modbus_init.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/modbus_init.d" -MT"Core/Src/modbus_init.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/modbus_init.o"
-arm-none-eabi-gcc "../Core/Src/modbus_test.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/modbus_test.d" -MT"Core/Src/modbus_test.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/modbus_test.o"
+arm-none-eabi-gcc "../Core/Src/scd30.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/scd30.d" -MT"Core/Src/scd30.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/scd30.o"
 arm-none-eabi-gcc "../Core/Src/stm32f3xx_hal_msp.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f3xx_hal_msp.d" -MT"Core/Src/stm32f3xx_hal_msp.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f3xx_hal_msp.o"
 arm-none-eabi-gcc "../Core/Src/stm32f3xx_it.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f3xx_it.d" -MT"Core/Src/stm32f3xx_it.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f3xx_it.o"
-arm-none-eabi-gcc "../Core/Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/syscalls.d" -MT"Core/Src/syscalls.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/syscalls.o"
 arm-none-eabi-gcc "../Core/Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/sysmem.d" -MT"Core/Src/sysmem.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/sysmem.o"
 arm-none-eabi-gcc "../Core/Src/system_stm32f3xx.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/system_stm32f3xx.d" -MT"Core/Src/system_stm32f3xx.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/system_stm32f3xx.o"
-arm-none-eabi-gcc "../Core/Src/uart_callbacks.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F303x8 -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/uart_callbacks.d" -MT"Core/Src/uart_callbacks.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/uart_callbacks.o"
-arm-none-eabi-gcc -o "modbusTrying.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\rolni\kody\Stm32-sensor-module-with-modbus\modbusTrying\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="modbusTrying.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: modbusTrying.elf
+arm-none-eabi-gcc -o "SCD30.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\rolni\kody\Stm32-sensor-module-with-modbus\SCD30\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SCD30.map" -Wl,--gc-sections -static -u _printf_float -specs=rdimon.specs -lc -lrdimon --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SCD30.elf
  
-arm-none-eabi-size  modbusTrying.elf 
-arm-none-eabi-objdump -h -S modbusTrying.elf  > "modbusTrying.list"
+arm-none-eabi-size  SCD30.elf 
+arm-none-eabi-objdump -h -S SCD30.elf  > "SCD30.list"
    text	   data	    bss	    dec	    hex	filename
-  20152	     52	   4028	  24232	   5ea8	modbusTrying.elf
+  28864	    476	   2188	  31528	   7b28	SCD30.elf
 Finished building: default.size.stdout
  
-Finished building: modbusTrying.list
+Finished building: SCD30.list
  
-16:06:36 **** Incremental Build of configuration Debug for project modbusTrying ****
+00:41:33 **** Incremental Build of configuration Debug for project SCD30 ****
 make -j8 all 
-arm-none-eabi-size  modbusTrying.elf 
+arm-none-eabi-size  SCD30.elf 
    text	   data	    bss	    dec	    hex	filename
-  20152	     52	   4028	  24232	   5ea8	modbusTrying.elf
+  28864	    476	   2188	  31528	   7b28	SCD30.elf
 Finished building: default.size.stdout
  
-16:26:57 **** Incremental Build of configuration Debug for project modbusTrying ****
+00:43:56 **** Incremental Build of configuration Debug for project SCD30 ****
 make -j8 all 
-arm-none-eabi-size  modbusTrying.elf 
+arm-none-eabi-size  SCD30.elf 
    text	   data	    bss	    dec	    hex	filename
-  20152	     52	   4028	  24232	   5ea8	modbusTrying.elf
+  28864	    476	   2188	  31528	   7b28	SCD30.elf
 Finished building: default.size.stdout
  
-16:27:08 **** Incremental Build of configuration Debug for project modbusTrying ****
+00:45:50 **** Incremental Build of configuration Debug for project SCD30 ****
 make -j8 all 
-arm-none-eabi-size  modbusTrying.elf 
+arm-none-eabi-size  SCD30.elf 
    text	   data	    bss	    dec	    hex	filename
-  20152	     52	   4028	  24232	   5ea8	modbusTrying.elf
+  28864	    476	   2188	  31528	   7b28	SCD30.elf
+Finished building: default.size.stdout
+ 
+00:48:14 **** Incremental Build of configuration Debug for project SCD30 ****
+make -j8 all 
+arm-none-eabi-size  SCD30.elf 
+   text	   data	    bss	    dec	    hex	filename
+  28864	    476	   2188	  31528	   7b28	SCD30.elf
+Finished building: default.size.stdout
+ 
+00:50:32 **** Incremental Build of configuration Debug for project SCD30 ****
+make -j8 all 
+arm-none-eabi-size  SCD30.elf 
+   text	   data	    bss	    dec	    hex	filename
+  28864	    476	   2188	  31528	   7b28	SCD30.elf
+Finished building: default.size.stdout
+ 
+00:54:07 **** Incremental Build of configuration Debug for project SCD30 ****
+make -j8 all 
+arm-none-eabi-size  SCD30.elf 
+   text	   data	    bss	    dec	    hex	filename
+  28864	    476	   2188	  31528	   7b28	SCD30.elf
+Finished building: default.size.stdout
+ 
+00:57:11 **** Incremental Build of configuration Debug for project ModbusWithSensorsNoRTOS ****
+make -j8 all 
+arm-none-eabi-size  ModbusWithSensorsNoRTOS.elf 
+   text	   data	    bss	    dec	    hex	filename
+  35780	     12	   2892	  38684	   971c	ModbusWithSensorsNoRTOS.elf
+Finished building: default.size.stdout
+ 
+00:59:20 **** Incremental Build of configuration Debug for project SCD30 ****
+make -j8 all 
+arm-none-eabi-size  SCD30.elf 
+   text	   data	    bss	    dec	    hex	filename
+  28864	    476	   2188	  31528	   7b28	SCD30.elf
+Finished building: default.size.stdout
+ 
+01:02:18 **** Incremental Build of configuration Debug for project SCD30 ****
+make -j8 all 
+arm-none-eabi-size  SCD30.elf 
+   text	   data	    bss	    dec	    hex	filename
+  28864	    476	   2188	  31528	   7b28	SCD30.elf
+Finished building: default.size.stdout
+ 
+01:05:12 **** Incremental Build of configuration Debug for project SCD30 ****
+make -j8 all 
+arm-none-eabi-size  SCD30.elf 
+   text	   data	    bss	    dec	    hex	filename
+  28864	    476	   2188	  31528	   7b28	SCD30.elf
+Finished building: default.size.stdout
+ 
+01:06:25 **** Incremental Build of configuration Debug for project SCD30 ****
+make -j8 all 
+arm-none-eabi-size  SCD30.elf 
+   text	   data	    bss	    dec	    hex	filename
+  28864	    476	   2188	  31528	   7b28	SCD30.elf
+Finished building: default.size.stdout
+ 
+01:06:51 **** Incremental Build of configuration Debug for project SCD30 ****
+make -j8 all 
+arm-none-eabi-size  SCD30.elf 
+   text	   data	    bss	    dec	    hex	filename
+  28864	    476	   2188	  31528	   7b28	SCD30.elf
+Finished building: default.size.stdout
+ 
+01:07:58 **** Incremental Build of configuration Debug for project SCD30 ****
+make -j8 all 
+arm-none-eabi-size  SCD30.elf 
+   text	   data	    bss	    dec	    hex	filename
+  28864	    476	   2188	  31528	   7b28	SCD30.elf
+Finished building: default.size.stdout
+ 
+01:09:26 **** Incremental Build of configuration Debug for project SCD30 ****
+make -j8 all 
+arm-none-eabi-size  SCD30.elf 
+   text	   data	    bss	    dec	    hex	filename
+  28864	    476	   2188	  31528	   7b28	SCD30.elf
 Finished building: default.size.stdout
  

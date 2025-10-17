@@ -1,0 +1,14 @@
+../Core/Src/modbus.c:45:10:lock	1
+../Core/Src/modbus.c:47:10:unlock	1
+../Core/Src/modbus.c:54:12:mbus_open	4
+../Core/Src/modbus.c:76:19:mbus_flush	1
+../Core/Src/modbus.c:83:19:mbus_response	2
+../Core/Src/modbus.c:96:14:mbus_error	1
+../Core/Src/modbus.c:102:26:mbus_poll_response	24
+../Core/Src/modbus.c:227:19:mbus_poll	29
+../Core/Src/modbus.c:386:20:mbus_device	1
+../Core/Src/modbus.c:391:20:mbus_context	2
+../Core/Src/modbus.c:398:19:mbus_send_error	1
+../Core/Src/modbus.c:405:19:mbus_send_data	6
+../Core/Src/modbus.c:425:19:mbus_connect	1
+../Core/Src/modbus.c:443:9:mbus_proto_address	10

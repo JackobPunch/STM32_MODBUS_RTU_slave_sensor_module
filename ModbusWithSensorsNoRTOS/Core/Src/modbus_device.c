@@ -14,7 +14,6 @@ uint16_t device_registers[20] = {0};
 
 /* Private function prototypes -----------------------------------------------*/
 static uint16_t Float_To_ModbusRegister(float value, float scale);
-static float ModbusRegister_To_Float(uint16_t value, float scale);
 
 /* Private functions ---------------------------------------------------------*/
 
@@ -40,16 +39,12 @@ static uint16_t Float_To_ModbusRegister(float value, float scale)
     return (uint16_t)scaled;
 }
 
-/**
- * @brief  Convert Modbus register to float with scaling
- * @param  value: Modbus register value
- * @param  scale: Scaling factor (e.g., 100 for 2 decimal places)
- * @retval Float value
- */
+/* Future use - convert Modbus register back to float (currently unused)
 static float ModbusRegister_To_Float(uint16_t value, float scale)
 {
     return (float)value / scale;
 }
+*/
 
 /* Exported functions -------------------------------------------------------*/
 
@@ -165,10 +160,19 @@ void Modbus_Device_UpdateSensors(void)
     // CO2: Scale by 1 (direct ppm values, max 65535 ppm)
     device_registers[12] = Float_To_ModbusRegister(Sensors_GetSCD30_CO2(), 1.0f); // 40013: CO2 ppm
 
-    // Temperature: Scale by 100 (2 decimal places, -327.68 to +327.67°C)
-    // Add offset of 32768 to handle negative temperatures
-    int16_t temp_scaled = (int16_t)(Sensors_GetSCD30_Temperature() * 100.0f);
-    device_registers[13] = (uint16_t)(temp_scaled + 32768); // 40014: Temperature (°C * 100 + 32768)
+    // Temperature: Scale by 100 (2 decimal places) - direct value
+    // 24.19°C should show as 2419
+    float temperature = Sensors_GetSCD30_Temperature();
+    if (temperature < -50.0f || temperature > 85.0f)
+    {
+        // Error condition - use special error value for invalid temperature
+        device_registers[13] = 0xFFFF; // 65535 indicates sensor error
+    }
+    else
+    {
+        // Direct temperature × 100 (no stupid offset)
+        device_registers[13] = (uint16_t)(temperature * 100.0f); // 40014: Temperature (°C × 100)
+    }
 
     // Humidity: Scale by 100 (2 decimal places, 0.00 to 655.35%)
     device_registers[14] = Float_To_ModbusRegister(Sensors_GetSCD30_Humidity(), 100.0f); // 40015: Humidity (% * 100)

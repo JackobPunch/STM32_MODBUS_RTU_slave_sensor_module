@@ -3480,26 +3480,26 @@ LOAD C:/ST/STM32CubeIDE_1.16.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
  .debug_macro   0x00017fcd       0x81 ./Core/Src/main.o
  .debug_macro   0x0001804e       0xd3 ./Core/Src/main.o
  .debug_macro   0x00018121      0x285 ./Core/Src/main.o
- .debug_macro   0x000183a6       0x10 ./Core/Src/main.o
- .debug_macro   0x000183b6       0x61 ./Core/Src/main.o
- .debug_macro   0x00018417       0x2a ./Core/Src/main.o
- .debug_macro   0x00018441       0x43 ./Core/Src/main.o
- .debug_macro   0x00018484       0x34 ./Core/Src/main.o
- .debug_macro   0x000184b8       0x16 ./Core/Src/main.o
- .debug_macro   0x000184ce       0x3c ./Core/Src/main.o
- .debug_macro   0x0001850a      0x370 ./Core/Src/main.o
- .debug_macro   0x0001887a       0x10 ./Core/Src/main.o
- .debug_macro   0x0001888a       0x16 ./Core/Src/main.o
- .debug_macro   0x000188a0       0x4a ./Core/Src/main.o
- .debug_macro   0x000188ea       0x34 ./Core/Src/main.o
- .debug_macro   0x0001891e       0x10 ./Core/Src/main.o
- .debug_macro   0x0001892e       0x58 ./Core/Src/main.o
- .debug_macro   0x00018986       0x8e ./Core/Src/main.o
- .debug_macro   0x00018a14       0x1c ./Core/Src/main.o
- .debug_macro   0x00018a30      0x185 ./Core/Src/main.o
- .debug_macro   0x00018bb5       0x16 ./Core/Src/main.o
- .debug_macro   0x00018bcb       0x16 ./Core/Src/main.o
- .debug_macro   0x00018be1      0x146 ./Core/Src/main.o
+ .debug_macro   0x000183a6       0x61 ./Core/Src/main.o
+ .debug_macro   0x00018407       0x2a ./Core/Src/main.o
+ .debug_macro   0x00018431       0x43 ./Core/Src/main.o
+ .debug_macro   0x00018474       0x34 ./Core/Src/main.o
+ .debug_macro   0x000184a8       0x16 ./Core/Src/main.o
+ .debug_macro   0x000184be       0x3c ./Core/Src/main.o
+ .debug_macro   0x000184fa      0x370 ./Core/Src/main.o
+ .debug_macro   0x0001886a       0x10 ./Core/Src/main.o
+ .debug_macro   0x0001887a       0x16 ./Core/Src/main.o
+ .debug_macro   0x00018890       0x4a ./Core/Src/main.o
+ .debug_macro   0x000188da       0x34 ./Core/Src/main.o
+ .debug_macro   0x0001890e       0x10 ./Core/Src/main.o
+ .debug_macro   0x0001891e       0x58 ./Core/Src/main.o
+ .debug_macro   0x00018976       0x8e ./Core/Src/main.o
+ .debug_macro   0x00018a04       0x1c ./Core/Src/main.o
+ .debug_macro   0x00018a20      0x185 ./Core/Src/main.o
+ .debug_macro   0x00018ba5       0x16 ./Core/Src/main.o
+ .debug_macro   0x00018bbb       0x16 ./Core/Src/main.o
+ .debug_macro   0x00018bd1      0x146 ./Core/Src/main.o
+ .debug_macro   0x00018d17       0x10 ./Core/Src/main.o
  .debug_macro   0x00018d27      0x2c1 ./Core/Src/scd30.o
  .debug_macro   0x00018fe8       0x10 ./Core/Src/scd30.o
  .debug_macro   0x00018ff8       0x20 ./Core/Src/scd30.o

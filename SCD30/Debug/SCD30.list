@@ -29,9 +29,9 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  12 .ARM.attributes 00000030  00000000  00000000  000091dc  2**0
                   CONTENTS, READONLY
- 13 .debug_info   00007ec9  00000000  00000000  0000920c  2**0
+ 13 .debug_info   00007ec8  00000000  00000000  0000920c  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_abbrev 000018b0  00000000  00000000  000110d5  2**0
+ 14 .debug_abbrev 000018b0  00000000  00000000  000110d4  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  15 .debug_aranges 00000760  00000000  00000000  00012988  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
@@ -993,9 +993,9 @@ void I2C_Scan(I2C_HandleTypeDef *hi2c)
 
 08000bfc <main>:
 /**
-  * @brief  The application entry point.
-  * @retval int
-  */
+ * @brief  The application entry point.
+ * @retval int
+ */
 int main(void)
 {
  8000bfc:	e92d 43b0 	stmdb	sp!, {r4, r5, r7, r8, r9, lr}
@@ -1133,9 +1133,9 @@ int main(void)
 
 08000cc8 <SystemClock_Config>:
 /**
-  * @brief System Clock Configuration
-  * @retval None
-  */
+ * @brief System Clock Configuration
+ * @retval None
+ */
 void SystemClock_Config(void)
 {
  8000cc8:	b580      	push	{r7, lr}
@@ -1166,8 +1166,8 @@ void SystemClock_Config(void)
  8000cfa:	615a      	str	r2, [r3, #20]
 
   /** Initializes the RCC Oscillators according to the specified parameters
-  * in the RCC_OscInitTypeDef structure.
-  */
+   * in the RCC_OscInitTypeDef structure.
+   */
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
  8000cfc:	2302      	movs	r3, #2
  8000cfe:	633b      	str	r3, [r7, #48]	@ 0x30
@@ -1193,11 +1193,10 @@ void SystemClock_Config(void)
   }
 
   /** Initializes the CPU, AHB and APB buses clocks
-  */
-  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
+   */
+  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2;
  8000d20:	230f      	movs	r3, #15
  8000d22:	61fb      	str	r3, [r7, #28]
-                              |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_HSI;
  8000d24:	2300      	movs	r3, #0
  8000d26:	623b      	str	r3, [r7, #32]
@@ -1247,10 +1246,10 @@ void SystemClock_Config(void)
  8000d6a:	bd80      	pop	{r7, pc}
 
 08000d6c <MX_I2C1_Init>:
-  * @brief I2C1 Initialization Function
-  * @param None
-  * @retval None
-  */
+ * @brief I2C1 Initialization Function
+ * @param None
+ * @retval None
+ */
 static void MX_I2C1_Init(void)
 {
  8000d6c:	b580      	push	{r7, lr}
@@ -1308,7 +1307,7 @@ static void MX_I2C1_Init(void)
   }
 
   /** Configure Analogue filter
-  */
+   */
   if (HAL_I2CEx_ConfigAnalogFilter(&hi2c1, I2C_ANALOGFILTER_ENABLE) != HAL_OK)
  8000db6:	2100      	movs	r1, #0
  8000db8:	4809      	ldr	r0, [pc, #36]	@ (8000de0 <MX_I2C1_Init+0x74>)
@@ -1322,7 +1321,7 @@ static void MX_I2C1_Init(void)
   }
 
   /** Configure Digital filter
-  */
+   */
   if (HAL_I2CEx_ConfigDigitalFilter(&hi2c1, 0) != HAL_OK)
  8000dc8:	2100      	movs	r1, #0
  8000dca:	4805      	ldr	r0, [pc, #20]	@ (8000de0 <MX_I2C1_Init+0x74>)
@@ -1337,7 +1336,6 @@ static void MX_I2C1_Init(void)
   /* USER CODE BEGIN I2C1_Init 2 */
 
   /* USER CODE END I2C1_Init 2 */
-
 }
  8000dda:	bf00      	nop
  8000ddc:	bd80      	pop	{r7, pc}
@@ -1347,10 +1345,10 @@ static void MX_I2C1_Init(void)
  8000de8:	00201d2b 	.word	0x00201d2b
 
 08000dec <MX_GPIO_Init>:
-  * @brief GPIO Initialization Function
-  * @param None
-  * @retval None
-  */
+ * @brief GPIO Initialization Function
+ * @param None
+ * @retval None
+ */
 static void MX_GPIO_Init(void)
 {
  8000dec:	b480      	push	{r7}
@@ -1398,9 +1396,9 @@ static void MX_GPIO_Init(void)
 
 08000e34 <Error_Handler>:
 /**
-  * @brief  This function is executed in case of error occurrence.
-  * @retval None
-  */
+ * @brief  This function is executed in case of error occurrence.
+ * @retval None
+ */
 void Error_Handler(void)
 {
  8000e34:	b480      	push	{r7}

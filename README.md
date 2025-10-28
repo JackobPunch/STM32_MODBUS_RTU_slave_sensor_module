@@ -51,11 +51,14 @@ This repository contains multiple STM32 projects demonstrating the evolution fro
 
 ```
 STM32F303K8 Pin Assignments:
-├── PA9/PA10/PA12  → RS485 Modbus (UART1 + DE/RE)
-├── PA0,PA3,PA6,PB0 → MQ2 Analog inputs (ADC1)
-├── PA1,PA4,PA7,PB1 → MQ2 Digital inputs (GPIO)
-├── PA15/PB3       → SCD30 I2C (SDA/SCL)
-└── PA5            → Status LED
+├── PA2/PA10/PA12  → RS485 Modbus (UART2 + DE/RE)
+├── PA0-PA3        → MQ2 Analog inputs (ADC1_CH1-4)
+├── PA8,PA11,PB5,PB4 → MQ2 Digital inputs (D9,D10,D11,D12)
+├── PB6/PB7        → SCD30 I2C1 (SCL/SDA) with internal pull-ups
+└── PB3            → Status LED
+
+⚠️  Hardware Constraint: PA5/PA6 pins cause I2C communication failure
+    when connected - these pins must be avoided completely.
 ```
 
 ### 2. Development Environment
@@ -71,12 +74,18 @@ Based on [stModbus library](https://github.com/urands/stModbus) with custom opti
 
 ```c
 // Modbus Register Map (Holding Registers)
-0x0001-0x0004: MQ2 Analog Values [0-4095]
-0x0005-0x0008: MQ2 Digital States [0/1]
-0x0009: CO₂ Level [ppm]
-0x000A: Temperature [°C × 10]
-0x000B: Humidity [% × 10]
+0x0001-0x0004: MQ2 Analog Values [0-4095] (PA0-PA3 ADC)
+0x0005-0x0008: MQ2 Digital States [0/1] (PA8,PA11,PB5,PB4)
+0x0009: CO₂ Level [ppm] (SCD30 via I2C1)
+0x000A: Temperature [°C × 100] (SCD30 via I2C1)  
+0x000B: Humidity [% × 100] (SCD30 via I2C1)
 0x000C: System Status Flags
+
+// Pin Mapping (Updated to avoid PA5/PA6 interference)
+MQ2_1: PA0 (ADC) + PA8  (Digital, D9)
+MQ2_2: PA1 (ADC) + PA11 (Digital, D10) 
+MQ2_3: PA2 (ADC) + PB5  (Digital, D11)
+MQ2_4: PA3 (ADC) + PB4  (Digital, D12)
 ```
 
 ## 📊 Project Evolution
@@ -117,6 +126,29 @@ Based on [stModbus library](https://github.com/urands/stModbus) with custom opti
 - **MQ2 Sensors**: Analog + digital threshold validation
 - **SCD30**: I2C CRC validation and data-ready polling
 - **Fault Tolerance**: Graceful degradation on sensor failures
+
+## ⚠️ Hardware Constraints & Workarounds
+
+### Critical I2C Interference Issue
+
+**Problem**: Connecting any hardware to pins **PA5/PA6** completely disables I2C communication on PB6/PB7, despite being on opposite sides of the MCU package.
+
+**Symptoms**:
+- SCD30 sensor returns `FF FF FF` invalid data
+- I2C communication stops entirely
+- Issue persists even with proper pull-up resistors configured
+
+**Root Cause**: Unknown electrical interference between PA5/PA6 pins and I2C peripheral - possibly PCB layout related, ground loops, or internal STM32F303K8 package crosstalk.
+
+**Solution**: 
+- **Avoid PA5/PA6 completely** - do not connect anything to these pins
+- Use alternative pins for MQ2 digital inputs:
+  - **PA8** (D9) - Easy onboard connection
+  - **PA11** (D10) - Easy onboard connection  
+  - **PB5** (D11) - Easy onboard connection
+  - **PB4** (D12) - Easy onboard connection
+
+**Impact**: Pin relocation to D9-D12 actually improves PCB layout and makes onboard connections easier.
 
 ## 📈 Performance Metrics
 

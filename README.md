@@ -2,7 +2,7 @@
 
 A comprehensive sensor monitoring system built on STM32F303K8 microcontroller for robotic applications, specifically designed for integration with PLC systems in competitive robotics environments like the [ROBOCOMP Festival](https://www.robocomp.info/).
 
-## � Live Demonstration
+## Live Demonstration
 
 ![MQ2 Gas Detection Demo](gif.gif)
 

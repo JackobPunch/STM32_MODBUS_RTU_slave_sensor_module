@@ -2,7 +2,20 @@
 
 A comprehensive sensor monitoring system built on STM32F303K8 microcontroller for robotic applications, specifically designed for integration with PLC systems in competitive robotics environments like the [ROBOCOMP Festival](https://www.robocomp.info/).
 
-## 🎯 Project Overview
+## � Live Demonstration
+
+![MQ2 Gas Detection Demo](demo/mq2-modbus-demo.gif)
+
+**What you see in the demo:**
+
+- **MQ2 Gas Detection**: Lighter flame triggers MQ2 sensor response
+- **Real-time Modbus**: MBPoll registers updating live as gas levels change
+- **Full System**: Complete electronics setup with STM32F303K8 + sensors
+- **Register Visualization**: All Modbus holding registers (0x0001-0x000C) visible and responsive
+
+The demonstration shows the production-ready sensor module detecting gas presence and immediately updating the Modbus RTU registers, proving real-time responsiveness suitable for robotic competition environments.
+
+## �🎯 Project Overview
 
 This repository contains multiple STM32 projects demonstrating the evolution from basic LED blinking to a complete multi-sensor Modbus RTU slave system. The final goal is to create a reliable sensor module for the **Smash Bot Arena** robotic competition, providing real-time environmental and gas detection data to master PLC systems.
 
@@ -77,13 +90,13 @@ Based on [stModbus library](https://github.com/urands/stModbus) with custom opti
 0x0001-0x0004: MQ2 Analog Values [0-4095] (PA0-PA3 ADC)
 0x0005-0x0008: MQ2 Digital States [0/1] (PA8,PA11,PB5,PB4)
 0x0009: CO₂ Level [ppm] (SCD30 via I2C1)
-0x000A: Temperature [°C × 100] (SCD30 via I2C1)  
+0x000A: Temperature [°C × 100] (SCD30 via I2C1)
 0x000B: Humidity [% × 100] (SCD30 via I2C1)
 0x000C: System Status Flags
 
 // Pin Mapping (Updated to avoid PA5/PA6 interference)
 MQ2_1: PA0 (ADC) + PA8  (Digital, D9)
-MQ2_2: PA1 (ADC) + PA11 (Digital, D10) 
+MQ2_2: PA1 (ADC) + PA11 (Digital, D10)
 MQ2_3: PA2 (ADC) + PB5  (Digital, D11)
 MQ2_4: PA3 (ADC) + PB4  (Digital, D12)
 ```
@@ -134,17 +147,19 @@ MQ2_4: PA3 (ADC) + PB4  (Digital, D12)
 **Problem**: Connecting any hardware to pins **PA5/PA6** completely disables I2C communication on PB6/PB7, despite being on opposite sides of the MCU package.
 
 **Symptoms**:
+
 - SCD30 sensor returns `FF FF FF` invalid data
 - I2C communication stops entirely
 - Issue persists even with proper pull-up resistors configured
 
 **Root Cause**: Unknown electrical interference between PA5/PA6 pins and I2C peripheral - possibly PCB layout related, ground loops, or internal STM32F303K8 package crosstalk.
 
-**Solution**: 
+**Solution**:
+
 - **Avoid PA5/PA6 completely** - do not connect anything to these pins
 - Use alternative pins for MQ2 digital inputs:
   - **PA8** (D9) - Easy onboard connection
-  - **PA11** (D10) - Easy onboard connection  
+  - **PA11** (D10) - Easy onboard connection
   - **PB5** (D11) - Easy onboard connection
   - **PB4** (D12) - Easy onboard connection
 
@@ -186,4 +201,4 @@ This project is developed for educational and competitive robotics purposes. Whe
 
 ---
 
-**Developed for ROBOCOMP Smash Bot Arena** | **STM32F303K8** | **Modbus RTU** 
+**Developed for ROBOCOMP Smash Bot Arena** | **STM32F303K8** | **Modbus RTU**

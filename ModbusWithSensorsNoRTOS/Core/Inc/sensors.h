@@ -28,13 +28,13 @@ extern "C"
 
 /* GPIO pins for MQ2 digital outputs (DOUT) - Updated to avoid PA5/PA6 I2C interference */
 #define MQ2_CH0_DOUT_GPIO GPIOA
-#define MQ2_CH0_DOUT_PIN GPIO_PIN_8  // PA8 (D9) -> MQ2 CH0 DOUT
+#define MQ2_CH0_DOUT_PIN GPIO_PIN_8 // PA8 (D9) -> MQ2 CH0 DOUT
 #define MQ2_CH1_DOUT_GPIO GPIOA
 #define MQ2_CH1_DOUT_PIN GPIO_PIN_11 // PA11 (D10) -> MQ2 CH1 DOUT
 #define MQ2_CH2_DOUT_GPIO GPIOB
-#define MQ2_CH2_DOUT_PIN GPIO_PIN_5  // PB5 (D11) -> MQ2 CH2 DOUT
+#define MQ2_CH2_DOUT_PIN GPIO_PIN_5 // PB5 (D11) -> MQ2 CH2 DOUT
 #define MQ2_CH3_DOUT_GPIO GPIOB
-#define MQ2_CH3_DOUT_PIN GPIO_PIN_4  // PB4 (D12) -> MQ2 CH3 DOUT
+#define MQ2_CH3_DOUT_PIN GPIO_PIN_4 // PB4 (D12) -> MQ2 CH3 DOUT
 
 /* SCD30 command constants */
 #define SCD30_CMD_START_MEASUREMENT 0x0010

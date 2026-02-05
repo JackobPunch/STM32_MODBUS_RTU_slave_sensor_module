@@ -4,7 +4,7 @@ A comprehensive sensor monitoring system built on STM32F303K8 microcontroller fo
 
 ## � Live Demonstration
 
-![MQ2 Gas Detection Demo](demo/mq2-modbus-demo.gif)
+![MQ2 Gas Detection Demo](gif.gif)
 
 **What you see in the demo:**
 

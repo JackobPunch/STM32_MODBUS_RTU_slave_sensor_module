@@ -8,7 +8,7 @@ A comprehensive sensor monitoring system built on STM32F303K8 microcontroller fo
 
 **What you see in the demo:**
 
-- **MQ2 Gas Detection**: Lighter flame triggers MQ2 sensor response
+- **MQ2 Gas Detection**: Lighter gas triggers MQ2 sensor response
 - **Real-time Modbus**: MBPoll registers updating live as gas levels change
 - **Full System**: Complete electronics setup with STM32F303K8 + sensors
 - **Register Visualization**: All Modbus holding registers (0x0001-0x000C) visible and responsive

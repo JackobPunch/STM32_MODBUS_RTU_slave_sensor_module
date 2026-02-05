@@ -186,4 +186,4 @@ This project is developed for educational and competitive robotics purposes. Whe
 
 ---
 
-**Developed for ROBOCOMP Smash Bot Arena** | **STM32F303K8** | **Modbus RTU** | **Production Ready**
+**Developed for ROBOCOMP Smash Bot Arena** | **STM32F303K8** | **Modbus RTU** 

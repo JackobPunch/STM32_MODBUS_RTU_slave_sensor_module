@@ -2,6 +2,8 @@
 
 A comprehensive sensor monitoring system built on STM32F303K8 microcontroller for robotic applications, specifically designed for integration with PLC systems in competitive robotics environments like the [ROBOCOMP Festival](https://www.robocomp.info/).
 
+> **Part of the Smash Bot Arena 2025 system** — developed for [KN Integra](https://github.com/KN-Integra) Science Club at AGH University. See also [STM32-32x16_RGB_LED](https://github.com/JackobPunch/STM32-32x16_RGB_LED): the arena display module (32×16 RGB LED matrix countdown timer) used on all four sides of the competition arena.
+
 ## Live Demonstration
 
 ![MQ2 Gas Detection Demo](gif.gif)

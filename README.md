@@ -8,7 +8,23 @@ STM32-based Modbus RTU slave exposing 4× MQ2 gas sensors and an SCD30 environme
 
 One of two modules in the system: see also [STM32-32x16_RGB_LED](https://github.com/JackobPunch/STM32-32x16_RGB_LED).
 
-The repo follows the incremental development path: LED blinking → standalone Modbus slave → individual sensor drivers → planned combination of both modules.
+## Features
+
+- Modbus RTU slave over RS485 at 9600 baud — all sensor values exposed as holding registers
+- 4× MQ2 gas sensors: analog ADC (24μs conversion) + digital threshold per channel
+- SCD30 environmental sensor: CO₂, temperature, humidity over I2C with CRC validation
+- Automatic error recovery: activity monitoring, timeout reset, software watchdog
+- <9% Modbus error rate after timing and recovery optimization (down from ~40%)
+
+## Development Path
+
+| Folder | Status | Description |
+|--------|--------|-------------|
+| `ledBlinking/` | Complete | HAL setup and GPIO basics |
+| `modbusTrying/` | Complete | Standalone Modbus RTU slave — main implementation |
+| `MQ2_1/` | Complete | ADC-based gas detection |
+| `SCD30/` | Complete | I2C CO₂/temp/humidity with CRC validation |
+| `ModbusRTOS/` | Experimental | FreeRTOS + Modbus (future scope) |
 
 ## Hardware
 
